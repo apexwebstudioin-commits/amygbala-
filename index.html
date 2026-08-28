@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>MBBS Abroad & Medical Admission Consultancy | Amygdala Education Consultancy</title>
     <meta name="description" content="Amygdala Education Consultancy provides guidance for MBBS admissions in India and abroad, including university selection, application support, documentation and visa guidance." />
     <link rel="canonical" href="https://amygdala-education.com/" />
+    <link rel="icon" type="image/jpeg" href="https://i.ibb.co/nsGBtnY1/Whats-App-Image-2026-08-24-at-5-05-54-PM.jpg" />
 
+    <!-- Open Graph -->
     <meta property="og:title" content="MBBS Abroad & Medical Admission Consultancy | Amygdala Education Consultancy" />
     <meta property="og:description" content="Guidance for MBBS admissions in India and abroad — university selection, application, documentation and visa support." />
     <meta property="og:type" content="website" />
@@ -32,12 +34,13 @@
         }
     </script>
 
+    <!-- Icons & Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
 
     <style>
         /* ============================================================
-           COLOR SYSTEM
+           COLOR SYSTEM & VARIABLES
            ============================================================ */
         :root {
             --navy: #071B3A;
@@ -50,13 +53,13 @@
             --text: #10233F;
             --muted: #687587;
             --border: #E5E0D5;
-            --shadow-sm: 0 2px 8px rgba(7, 27, 58, 0.04);
-            --shadow-md: 0 8px 30px rgba(7, 27, 58, 0.06);
-            --shadow-lg: 0 20px 60px rgba(7, 27, 58, 0.08);
+            --shadow-sm: 0 4px 12px rgba(7, 27, 58, 0.05);
+            --shadow-md: 0 10px 30px rgba(7, 27, 58, 0.08);
+            --shadow-lg: 0 20px 60px rgba(7, 27, 58, 0.12);
             --radius: 16px;
-            --radius-sm: 8px;
+            --radius-sm: 10px;
             --radius-full: 9999px;
-            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         /* ============================================================
@@ -66,6 +69,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         html {
             scroll-behavior: smooth;
@@ -90,7 +94,7 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 20px;
         }
 
         /* ============================================================
@@ -100,34 +104,64 @@
             display: inline-block;
             background: rgba(212, 163, 41, 0.08);
             color: var(--gold);
-            font-weight: 600;
-            font-size: 0.7rem;
+            font-weight: 700;
+            font-size: 0.75rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            padding: 4px 16px;
+            padding: 5px 16px;
             border-radius: var(--radius-full);
-            border: 1px solid rgba(212, 163, 41, 0.10);
-            margin-bottom: 10px;
+            border: 1px solid rgba(212, 163, 41, 0.2);
+            margin-bottom: 12px;
         }
         .section-title {
-            font-size: 2.6rem;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
             font-weight: 800;
             color: var(--navy);
-            line-height: 1.15;
+            line-height: 1.2;
             letter-spacing: -0.02em;
         }
         .section-title .highlight {
             color: var(--gold);
         }
         .section-sub {
-            font-size: 1.05rem;
+            font-size: clamp(0.92rem, 2vw, 1.05rem);
             color: var(--muted);
             max-width: 620px;
-            margin: 0 auto 40px;
-            line-height: 1.8;
+            margin: 10px auto 36px;
+            line-height: 1.7;
         }
         .text-center {
             text-align: center;
+        }
+
+        /* ============================================================
+           SCROLL ANIMATIONS
+           ============================================================ */
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-children > * {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .stagger-children.visible > *:nth-child(1) { transition-delay: 0.06s; }
+        .stagger-children.visible > *:nth-child(2) { transition-delay: 0.14s; }
+        .stagger-children.visible > *:nth-child(3) { transition-delay: 0.22s; }
+        .stagger-children.visible > *:nth-child(4) { transition-delay: 0.30s; }
+        .stagger-children.visible > *:nth-child(5) { transition-delay: 0.38s; }
+        .stagger-children.visible > *:nth-child(6) { transition-delay: 0.46s; }
+        .stagger-children.visible > * {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* ============================================================
@@ -136,65 +170,54 @@
         .btn-gold {
             background: var(--gold);
             color: var(--white);
-            padding: 14px 36px;
+            padding: 14px 32px;
             border-radius: var(--radius-full);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             box-shadow: 0 4px 16px rgba(212, 163, 41, 0.25);
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-gold::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -60%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
-            transform: rotate(25deg) translateX(-100%);
-            transition: transform 0.8s ease;
-        }
-        .btn-gold:hover::after {
-            transform: rotate(25deg) translateX(100%);
+            min-height: 48px;
         }
         .btn-gold:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(212, 163, 41, 0.35);
+            box-shadow: 0 8px 24px rgba(212, 163, 41, 0.35);
             background: var(--gold-light);
+            color: var(--navy);
         }
         .btn-teal {
             background: #0B6B57;
             color: var(--white);
-            padding: 14px 36px;
+            padding: 14px 32px;
             border-radius: var(--radius-full);
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             border: none;
             cursor: pointer;
             transition: var(--transition);
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             box-shadow: 0 4px 16px rgba(11, 107, 87, 0.20);
+            min-height: 48px;
         }
         .btn-teal:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(11, 107, 87, 0.30);
+            box-shadow: 0 8px 24px rgba(11, 107, 87, 0.30);
             background: #0e8a72;
         }
 
         /* ============================================================
-           HEADER
+           HEADER & CIRCULAR LOGO
            ============================================================ */
         header {
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
             padding: 12px 0;
@@ -204,12 +227,12 @@
             right: 0;
             z-index: 999;
             border-bottom: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: all 0.35s ease;
         }
         header.scrolled {
-            padding: 6px 0;
-            box-shadow: 0 4px 30px rgba(7, 27, 58, 0.06);
-            background: rgba(255, 255, 255, 0.96);
+            padding: 8px 0;
+            box-shadow: 0 4px 20px rgba(7, 27, 58, 0.08);
+            background: rgba(255, 255, 255, 0.98);
         }
         header .container {
             display: flex;
@@ -219,70 +242,67 @@
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+        }
+        /* Prominent Circular Logo */
+        .logo img {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2.5px solid var(--gold);
+            box-shadow: 0 3px 12px rgba(212, 163, 41, 0.28);
             transition: var(--transition);
         }
-        header.scrolled .logo {
-            gap: 8px;
+        header.scrolled .logo img {
+            width: 44px;
+            height: 44px;
         }
-        .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: var(--navy);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-brand-title {
+            font-size: 1.25rem;
             font-weight: 800;
-            font-size: 0.95rem;
-            color: var(--gold);
-            transition: var(--transition);
-        }
-        header.scrolled .logo-icon {
-            width: 34px;
-            height: 34px;
-            font-size: 0.8rem;
-        }
-        .logo-text {
             color: var(--navy);
-            font-weight: 800;
-            font-size: 1.15rem;
-            letter-spacing: -0.3px;
-            transition: var(--transition);
+            letter-spacing: -0.02em;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
         }
-        header.scrolled .logo-text {
-            font-size: 1rem;
-        }
-        .logo-text span {
+        .logo-brand-title span {
             color: var(--gold);
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 22px;
         }
         nav a {
             color: var(--muted);
             font-weight: 500;
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             transition: var(--transition);
             position: relative;
-            padding-bottom: 4px;
+            padding: 4px 0;
         }
         nav a::after {
             content: '';
             position: absolute;
-            bottom: -2px;
+            bottom: 0;
             left: 0;
             width: 0;
-            height: 2.5px;
+            height: 2px;
             background: var(--gold);
-            transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: width 0.3s ease;
             border-radius: 4px;
         }
-        nav a:hover {
+        nav a:hover,
+        nav a.active {
             color: var(--navy);
+            font-weight: 700;
         }
         nav a:hover::after,
         nav a.active::after {
@@ -292,11 +312,11 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
         .header-actions .call-btn {
-            background: var(--gold);
-            color: var(--white);
+            background: rgba(212, 163, 41, 0.1);
+            color: var(--gold);
             padding: 8px 16px;
             border-radius: var(--radius-full);
             font-weight: 700;
@@ -304,32 +324,28 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            border: 1px solid rgba(212, 163, 41, 0.2);
             transition: var(--transition);
-            border: none;
-            cursor: pointer;
         }
         .header-actions .call-btn:hover {
-            background: var(--gold-light);
+            background: var(--gold);
+            color: var(--white);
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(212, 163, 41, 0.20);
         }
         .nav-cta {
             background: var(--gold);
             color: var(--white) !important;
-            padding: 8px 20px;
+            padding: 9px 20px;
             border-radius: var(--radius-full);
             font-weight: 700;
             font-size: 0.85rem;
             transition: var(--transition);
-        }
-        .nav-cta::after {
-            display: none !important;
+            box-shadow: 0 4px 14px rgba(212, 163, 41, 0.2);
         }
         .nav-cta:hover {
             background: var(--gold-light);
+            color: var(--navy) !important;
             transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(212, 163, 41, 0.20);
-            color: var(--white) !important;
         }
         .hamburger {
             display: none;
@@ -338,7 +354,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 4px;
+            padding: 6px;
         }
         .hamburger span {
             width: 24px;
@@ -357,18 +373,18 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 880px) {
             nav {
                 display: none;
                 flex-direction: column;
                 background: var(--white);
                 position: absolute;
-                top: 60px;
-                left: 16px;
-                right: 16px;
-                padding: 24px;
+                top: 72px;
+                left: 14px;
+                right: 14px;
+                padding: 22px;
                 border-radius: var(--radius);
-                gap: 14px;
+                gap: 16px;
                 box-shadow: var(--shadow-lg);
                 border: 1px solid var(--border);
             }
@@ -387,209 +403,79 @@
            HERO
            ============================================================ */
         .hero {
-            min-height: 90vh;
-            background: var(--cream);
+            min-height: 88vh;
+            background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%);
             display: flex;
             align-items: center;
-            padding: 120px 0 80px;
+            padding: 130px 0 70px;
             position: relative;
             overflow: hidden;
         }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -30%;
-            right: -20%;
-            width: 60%;
-            height: 140%;
-            background: radial-gradient(ellipse, rgba(212, 163, 41, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .hero .container {
-            position: relative;
-            z-index: 1;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 24px;
+        .hero-content {
+            max-width: 820px;
         }
         .hero-content .pre-title {
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 700;
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 6px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.2s forwards;
+            margin-bottom: 10px;
         }
         .hero-content h1 {
-            font-size: 3.8rem;
+            font-size: clamp(2.2rem, 5.5vw, 3.6rem);
             font-weight: 900;
             color: var(--navy);
-            line-height: 1.06;
+            line-height: 1.12;
             letter-spacing: -0.03em;
-            margin-bottom: 6px;
-            overflow: hidden;
-        }
-        .hero-content h1 .word {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: wordReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-        .hero-content h1 .word:nth-child(1) {
-            animation-delay: 0.3s;
-        }
-        .hero-content h1 .word:nth-child(2) {
-            animation-delay: 0.5s;
-        }
-        .hero-content h1 .word:nth-child(3) {
-            animation-delay: 0.7s;
-        }
-        .hero-content h1 .word:nth-child(4) {
-            animation-delay: 0.9s;
-        }
-        .hero-content h1 .word:nth-child(5) {
-            animation-delay: 1.1s;
-        }
-        @keyframes wordReveal {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            margin-bottom: 14px;
         }
         .hero-content h1 .gold-text {
             color: var(--gold);
-            position: relative;
-        }
-        .hero-content h1 .gold-text::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 0;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 4px;
-            animation: goldLineGrow 1.2s ease 1.4s forwards;
-        }
-        @keyframes goldLineGrow {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 100%;
-            }
         }
         .hero-content .sub-text {
-            font-size: 1.1rem;
+            font-size: clamp(0.98rem, 2vw, 1.15rem);
             color: var(--muted);
-            max-width: 560px;
-            line-height: 1.8;
+            max-width: 620px;
+            line-height: 1.7;
             margin-bottom: 28px;
-            margin-top: 8px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 1.2s forwards;
         }
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 1.4s forwards;
-        }
-        .hero-progress {
-            margin-top: 40px;
-            width: 100%;
-            max-width: 500px;
-            height: 3px;
-            background: var(--border);
-            border-radius: 4px;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 1.6s forwards;
-        }
-        .hero-progress .fill {
-            width: 0;
-            height: 100%;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            border-radius: 4px;
-            animation: progressFill 2s ease 1.8s forwards;
-        }
-        @keyframes progressFill {
-            0% {
-                width: 0;
-            }
-            100% {
-                width: 70%;
-            }
         }
 
-        @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.4rem;
-            }
-            .hero-progress {
-                max-width: 100%;
-            }
-        }
         @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
             .hero-buttons .btn-gold,
             .hero-buttons .btn-teal {
                 width: 100%;
-                justify-content: center;
             }
-            .container {
-                padding: 0 16px;
+            .hero {
+                padding: 110px 0 50px;
             }
         }
 
         /* ============================================================
-           WHY AMYGDALA (Cards - kept as grid)
+           WHY AMYGDALA
            ============================================================ */
         .why-amygdala {
-            padding: 80px 0;
+            padding: 70px 0;
             background: var(--white);
         }
         .why-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-            margin-top: 8px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
         }
         .why-card {
             background: var(--white);
-            padding: 32px 24px;
+            padding: 32px 22px;
             border-radius: var(--radius);
             border: 1px solid var(--border);
             text-align: center;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: default;
+            transition: var(--transition);
             position: relative;
-            overflow: hidden;
         }
         .why-card .badge {
             position: absolute;
@@ -597,196 +483,154 @@
             right: 12px;
             background: var(--gold);
             color: var(--white);
-            font-size: 0.6rem;
+            font-size: 0.65rem;
             font-weight: 700;
             text-transform: uppercase;
-            padding: 2px 12px;
+            padding: 2px 10px;
             border-radius: var(--radius-full);
-            letter-spacing: 0.5px;
+        }
+        .why-card .icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212, 163, 41, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.5rem;
+            color: var(--gold);
+            transition: var(--transition);
+        }
+        .why-card h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 6px;
+            transition: color 0.3s;
+        }
+        .why-card p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            transition: color 0.3s;
         }
         .why-card:hover {
             background: var(--navy);
             border-color: var(--gold);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 50px rgba(7, 27, 58, 0.15);
-        }
-        .why-card:hover .badge {
-            background: var(--white);
-            color: var(--navy);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
         }
         .why-card:hover .icon {
             background: var(--gold);
             color: var(--white);
         }
-        .why-card:hover h4,
-        .why-card:hover p {
+        .why-card:hover h4 {
             color: var(--white);
         }
-        .why-card .icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(212, 163, 41, 0.06);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 14px;
-            font-size: 1.5rem;
-            color: var(--gold);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        .why-card h4 {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: var(--navy);
-            margin-bottom: 6px;
-            transition: color 0.5s ease;
-        }
-        .why-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            transition: color 0.5s ease;
+        .why-card:hover p {
+            color: rgba(255, 255, 255, 0.8);
         }
 
         /* ============================================================
-           PROCESS — Simple Vertical Timeline
+           PROCESS / JOURNEY
            ============================================================ */
         .process-section {
-            padding: 80px 0;
+            padding: 70px 0;
             background: var(--off-white);
         }
         .process-timeline {
-            max-width: 700px;
+            max-width: 680px;
             margin: 0 auto;
             position: relative;
-            padding: 20px 0 10px 30px;
+            padding: 10px 0 10px 24px;
         }
         .process-timeline::before {
             content: '';
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 20px;
             bottom: 20px;
             width: 3px;
             background: var(--border);
             border-radius: 4px;
-            overflow: hidden;
         }
         .process-timeline .fill {
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 20px;
             width: 3px;
             height: 0;
             background: linear-gradient(180deg, var(--gold), var(--gold-light));
             border-radius: 4px;
-            transition: height 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: height 1.6s cubic-bezier(0.16, 1, 0.3, 1);
             z-index: 1;
         }
         .process-timeline .fill.animated {
             height: calc(100% - 40px);
         }
-
         .process-step-item {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
+            gap: 18px;
             padding: 16px 0;
+            text-align: left;
             opacity: 0;
             transform: translateY(20px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-            position: relative;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .process-step-item.visible {
             opacity: 1;
             transform: translateY(0);
         }
         .process-step-item .step-num {
-            flex: 0 0 40px;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             border-radius: 50%;
             background: var(--white);
-            border: 2px solid var(--border);
+            border: 2px solid var(--gold);
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 800;
-            font-size: 0.8rem;
-            color: var(--muted);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-            z-index: 2;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-        .process-step-item.visible .step-num {
-            border-color: var(--gold);
+            font-size: 0.82rem;
             color: var(--gold);
-            background: var(--white);
-            box-shadow: 0 0 0 4px rgba(212, 163, 41, 0.08);
-            transform: scale(1.05);
-        }
-        .process-step-item .step-content {
-            flex: 1;
+            flex-shrink: 0;
+            z-index: 2;
+            box-shadow: 0 2px 8px rgba(212, 163, 41, 0.15);
         }
         .process-step-item .step-content h5 {
             font-weight: 700;
             color: var(--navy);
             font-size: 1.05rem;
-            margin-bottom: 2px;
+            margin-bottom: 3px;
         }
         .process-step-item .step-content p {
             color: var(--muted);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             line-height: 1.6;
-            margin: 0;
-        }
-
-        @media (max-width: 480px) {
-            .process-timeline {
-                padding-left: 20px;
-            }
-            .process-timeline::before {
-                left: 10px;
-            }
-            .process-timeline .fill {
-                left: 10px;
-            }
-            .process-step-item .step-num {
-                flex: 0 0 32px;
-                width: 32px;
-                height: 32px;
-                font-size: 0.65rem;
-            }
-            .process-step-item .step-content h5 {
-                font-size: 0.9rem;
-            }
-            .process-step-item .step-content p {
-                font-size: 0.8rem;
-            }
         }
 
         /* ============================================================
-           SLIDER BASE (reusable for countries, universities, services)
+           SLIDER BASE (Touch Friendly & Responsive)
            ============================================================ */
         .slider-section {
-            padding: 80px 0;
+            padding: 70px 0;
             position: relative;
         }
-        .slider-section .slider-container {
+        .slider-container {
             position: relative;
             overflow: hidden;
-            padding: 0 10px;
+            padding: 12px 0;
+            touch-action: pan-y;
         }
-        .slider-section .slider-track {
+        .slider-track {
             display: flex;
-            gap: 20px;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            gap: 16px;
+            transition: transform 0.45s ease;
             will-change: transform;
         }
-        .slider-section .slider-btn {
+        .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -796,45 +640,48 @@
             background: var(--white);
             border: 1px solid var(--border);
             color: var(--navy);
-            font-size: 1rem;
+            font-size: 0.95rem;
             cursor: pointer;
-            z-index: 2;
+            z-index: 5;
             transition: var(--transition);
             display: flex;
             align-items: center;
             justify-content: center;
             box-shadow: var(--shadow-sm);
         }
-        .slider-section .slider-btn:hover {
+        .slider-btn:hover {
             background: var(--gold);
             color: var(--white);
             border-color: var(--gold);
         }
-        .slider-section .slider-btn.prev {
-            left: 0px;
-        }
-        .slider-section .slider-btn.next {
-            right: 0px;
+        .slider-btn.prev { left: -10px; }
+        .slider-btn.next { right: -10px; }
+
+        @media (max-width: 768px) {
+            .slider-btn.prev { left: 2px; }
+            .slider-btn.next { right: 2px; }
+            .slider-btn {
+                width: 36px;
+                height: 36px;
+                font-size: 0.85rem;
+            }
         }
 
-        /* ============================================================
-           COUNTRY SLIDER ITEMS (clean, no heavy card)
-           ============================================================ */
+        /* Country Slide */
         .country-slide {
-            flex: 0 0 calc(25% - 15px);
-            min-width: 0;
             background: var(--white);
             border-radius: var(--radius-sm);
-            padding: 24px 18px;
+            padding: 22px 16px;
             border: 1px solid var(--border);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
+            transition: var(--transition);
+            box-sizing: border-box;
+            user-select: none;
         }
         .country-slide:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-sm);
             border-color: var(--gold);
+            box-shadow: var(--shadow-sm);
         }
         .country-slide .flag {
             font-size: 2.2rem;
@@ -843,57 +690,38 @@
         .country-slide h5 {
             font-weight: 700;
             color: var(--navy);
-            font-size: 0.95rem;
+            font-size: 0.98rem;
         }
         .country-slide p {
             color: var(--muted);
-            font-size: 0.8rem;
-            line-height: 1.4;
+            font-size: 0.82rem;
+            margin-top: 2px;
         }
         .country-slide .uni-list {
             margin-top: 6px;
-            font-size: 0.75rem;
-            color: var(--muted);
-        }
-        .country-slide .explore-link {
-            display: inline-block;
-            margin-top: 10px;
+            font-size: 0.78rem;
             color: var(--gold);
-            font-weight: 600;
-            font-size: 0.8rem;
-            transition: var(--transition);
-        }
-        .country-slide .explore-link i {
-            transition: var(--transition);
-        }
-        .country-slide .explore-link:hover {
-            color: var(--gold-light);
-        }
-        .country-slide .explore-link:hover i {
-            transform: translateX(4px);
+            font-weight: 700;
         }
 
-        /* ============================================================
-           UNIVERSITY SLIDER ITEMS (clean, no heavy card)
-           ============================================================ */
+        /* University Slide */
         .uni-slide {
-            flex: 0 0 calc(33.333% - 14px);
-            min-width: 0;
             background: var(--white);
             border-radius: var(--radius-sm);
-            padding: 24px 20px;
+            padding: 22px 18px;
             border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
+            text-align: left;
+            transition: var(--transition);
+            user-select: none;
         }
         .uni-slide:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-sm);
             border-color: var(--gold);
+            box-shadow: var(--shadow-sm);
         }
         .uni-slide .uni-logo {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             background: var(--navy);
             border-radius: var(--radius-sm);
             display: flex;
@@ -901,8 +729,8 @@
             justify-content: center;
             color: var(--gold);
             font-weight: 800;
-            font-size: 0.8rem;
-            margin-bottom: 12px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
         }
         .uni-slide .uni-name {
             font-weight: 700;
@@ -910,65 +738,42 @@
             font-size: 1rem;
         }
         .uni-slide .uni-country {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--muted);
             display: flex;
             align-items: center;
-            gap: 4px;
-            margin-top: 2px;
+            gap: 5px;
+            margin-top: 3px;
         }
         .uni-slide .uni-detail {
             margin-top: 10px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--muted);
         }
         .uni-slide .uni-detail span {
-            display: inline-block;
-            background: rgba(212, 163, 41, 0.06);
+            background: rgba(212, 163, 41, 0.1);
             color: var(--gold);
-            font-size: 0.7rem;
-            font-weight: 600;
-            padding: 2px 14px;
+            font-weight: 700;
+            font-size: 0.72rem;
+            padding: 2px 8px;
             border-radius: var(--radius-full);
-            border: 1px solid rgba(212, 163, 41, 0.06);
-            margin-right: 6px;
-        }
-        .uni-slide .view-link {
-            display: inline-block;
-            margin-top: 14px;
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: var(--transition);
-        }
-        .uni-slide .view-link i {
-            transition: var(--transition);
-        }
-        .uni-slide .view-link:hover {
-            color: var(--gold-light);
-        }
-        .uni-slide .view-link:hover i {
-            transform: translateX(4px);
+            margin-right: 4px;
         }
 
-        /* ============================================================
-           SERVICE SLIDER ITEMS (clean, no heavy card)
-           ============================================================ */
+        /* Service Slide */
         .service-slide {
-            flex: 0 0 calc(25% - 15px);
-            min-width: 0;
             background: var(--white);
             border-radius: var(--radius-sm);
-            padding: 28px 18px;
+            padding: 24px 16px;
             border: 1px solid var(--border);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
+            transition: var(--transition);
+            user-select: none;
         }
         .service-slide:hover {
             transform: translateY(-4px);
-            box-shadow: var(--shadow-sm);
             border-color: var(--gold);
+            box-shadow: var(--shadow-sm);
         }
         .service-slide .icon {
             font-size: 1.8rem;
@@ -978,468 +783,83 @@
         .service-slide h5 {
             font-weight: 700;
             color: var(--navy);
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             margin-bottom: 4px;
         }
         .service-slide p {
             color: var(--muted);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             line-height: 1.5;
         }
 
-        /* ============================================================
-           RESPONSIVE SLIDER BREAKPOINTS
-           ============================================================ */
-        @media (max-width: 1024px) {
-            .country-slide {
-                flex: 0 0 calc(33.333% - 14px);
-            }
-            .uni-slide {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .service-slide {
-                flex: 0 0 calc(33.333% - 14px);
-            }
-        }
-        @media (max-width: 768px) {
-            .country-slide {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .uni-slide {
-                flex: 0 0 calc(100% - 10px);
-            }
-            .service-slide {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .slider-section .slider-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 0.8rem;
-            }
-            .slider-section .slider-btn.prev {
-                left: 0;
-            }
-            .slider-section .slider-btn.next {
-                right: 0;
-            }
-        }
-        @media (max-width: 480px) {
-            .country-slide {
-                flex: 0 0 calc(85% - 10px);
-            }
-            .service-slide {
-                flex: 0 0 calc(85% - 10px);
-            }
-        }
-
-        /* ============================================================
-           GALLERY SLIDER (Life With Amygdala)
-           ============================================================ */
-        .gallery-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-        .gallery-slider {
-            position: relative;
-            overflow: hidden;
-            padding: 0 10px;
-        }
-        .gallery-track {
-            display: flex;
-            gap: 20px;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
+        /* Gallery Card */
         .gallery-card {
-            flex: 0 0 calc(25% - 15px);
-            min-width: 0;
-            background: var(--cream);
+            background: var(--white);
             border-radius: var(--radius);
             overflow: hidden;
             border: 1px solid var(--border);
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            cursor: default;
-            position: relative;
-        }
-        .gallery-card .badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--gold);
-            color: var(--white);
-            font-size: 0.55rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 2px 10px;
-            border-radius: var(--radius-full);
-            letter-spacing: 0.3px;
-            z-index: 2;
+            transition: var(--transition);
+            text-align: left;
+            user-select: none;
         }
         .gallery-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-5px);
             border-color: var(--gold);
+            box-shadow: var(--shadow-md);
         }
         .gallery-card .gallery-image {
-            width: 100%;
             aspect-ratio: 4/3;
             background: var(--cream);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: var(--muted);
-            font-size: 2.4rem;
+            color: var(--navy);
+            font-size: 2rem;
             gap: 6px;
-            transition: background 0.4s ease;
-            position: relative;
-            overflow: hidden;
+            transition: var(--transition);
         }
         .gallery-card:hover .gallery-image {
             background: var(--navy);
             color: var(--gold);
         }
-        .gallery-card .gallery-image i {
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gallery-card:hover .gallery-image i {
-            transform: scale(1.08);
-        }
         .gallery-card .gallery-image .image-label {
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: var(--muted);
-            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 700;
             letter-spacing: 1px;
-            transition: color 0.4s ease;
-        }
-        .gallery-card:hover .gallery-image .image-label {
-            color: var(--gold);
-        }
-        .gallery-card .gallery-image::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .gallery-card:hover .gallery-image::after {
-            transform: scaleX(1);
+            text-transform: uppercase;
         }
         .gallery-card .gallery-info {
-            padding: 16px 18px 20px;
-            background: var(--white);
-            transition: background 0.4s ease;
-        }
-        .gallery-card:hover .gallery-info {
-            background: var(--off-white);
+            padding: 14px 16px;
         }
         .gallery-card .gallery-info h5 {
             font-weight: 700;
             color: var(--navy);
             font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-        .gallery-card:hover .gallery-info h5 {
-            color: var(--gold);
         }
         .gallery-card .gallery-info p {
             color: var(--muted);
             font-size: 0.8rem;
             margin-top: 2px;
-            line-height: 1.5;
-        }
-
-        .gallery-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 1px solid var(--border);
-            color: var(--navy);
-            font-size: 1rem;
-            cursor: pointer;
-            z-index: 2;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-        }
-        .gallery-btn:hover {
-            background: var(--gold);
-            color: var(--white);
-            border-color: var(--gold);
-        }
-        .gallery-btn.prev {
-            left: 0px;
-        }
-        .gallery-btn.next {
-            right: 0px;
-        }
-
-        @media (max-width: 1024px) {
-            .gallery-card {
-                flex: 0 0 calc(33.333% - 14px);
-            }
-        }
-        @media (max-width: 768px) {
-            .gallery-card {
-                flex: 0 0 calc(50% - 10px);
-            }
-            .gallery-btn {
-                width: 34px;
-                height: 34px;
-                font-size: 0.8rem;
-            }
-            .gallery-btn.prev {
-                left: 0;
-            }
-            .gallery-btn.next {
-                right: 0;
-            }
-        }
-        @media (max-width: 480px) {
-            .gallery-card {
-                flex: 0 0 calc(85% - 10px);
-            }
         }
 
         /* ============================================================
-           TESTIMONIALS with Rating
-           ============================================================ */
-        .testimonials {
-            padding: 80px 0;
-            background: var(--off-white);
-        }
-        .rating-summary {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            margin: 18px auto 30px;
-            flex-wrap: wrap;
-        }
-        .rating-stars {
-            display: flex;
-            gap: 4px;
-            color: var(--gold);
-            font-size: 1rem;
-        }
-        .rating-stars i {
-            animation: starPulse 2s ease-in-out infinite;
-        }
-        .rating-stars i:nth-child(2) {
-            animation-delay: .1s;
-        }
-        .rating-stars i:nth-child(3) {
-            animation-delay: .2s;
-        }
-        .rating-stars i:nth-child(4) {
-            animation-delay: .3s;
-        }
-        .rating-stars i:nth-child(5) {
-            animation-delay: .4s;
-        }
-        @keyframes starPulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
-        }
-        .rating-summary strong {
-            color: var(--navy);
-            font-size: 1.05rem;
-        }
-        .rating-summary span {
-            color: var(--muted);
-            font-size: .85rem;
-        }
-
-        .testimonial-slider {
-            position: relative;
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .testimonial-track {
-            display: flex;
-            transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            will-change: transform;
-        }
-        .testimonial-item {
-            flex: 0 0 100%;
-            padding: 0 20px;
-        }
-        .testimonial-item .inner {
-            background: var(--white);
-            padding: 36px 32px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: var(--transition);
-        }
-        .testimonial-item .inner:hover {
-            border-color: var(--gold);
-            box-shadow: var(--shadow-sm);
-        }
-        .testimonial-item .stars {
-            color: var(--gold);
-            font-size: 1rem;
-            margin-bottom: 12px;
-        }
-        .testimonial-item blockquote {
-            font-size: 1rem;
-            color: var(--text);
-            font-style: italic;
-            line-height: 1.8;
-        }
-        .testimonial-item .author {
-            margin-top: 14px;
-            font-weight: 600;
-            color: var(--navy);
-            font-size: 0.95rem;
-        }
-        .testimonial-item .author span {
-            font-weight: 400;
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-
-        .testimonial-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 16px;
-            margin-top: 20px;
-        }
-        .testimonial-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--white);
-            border: 1px solid var(--border);
-            color: var(--navy);
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-sm);
-        }
-        .testimonial-btn:hover {
-            background: var(--gold);
-            color: var(--white);
-            border-color: var(--gold);
-        }
-        .testimonial-dots {
-            display: flex;
-            gap: 8px;
-        }
-        .testimonial-dots .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: var(--border);
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            padding: 0;
-        }
-        .testimonial-dots .dot.active {
-            background: var(--gold);
-            width: 28px;
-            border-radius: 6px;
-        }
-
-        /* ============================================================
-           FAQ
-           ============================================================ */
-        .faq-section {
-            padding: 80px 0;
-            background: var(--white);
-        }
-        .faq-list {
-            max-width: 720px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            background: var(--off-white);
-            border-radius: var(--radius-sm);
-            margin-bottom: 10px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-        .faq-item:hover {
-            border-color: var(--gold);
-        }
-        .faq-item .faq-q {
-            padding: 16px 20px;
-            font-weight: 600;
-            color: var(--navy);
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: var(--transition);
-        }
-        .faq-item .faq-q:hover {
-            background: var(--white);
-        }
-        .faq-item .faq-q i {
-            color: var(--gold);
-            transition: var(--transition);
-        }
-        .faq-item .faq-a {
-            padding: 0 20px 16px;
-            color: var(--muted);
-            font-size: 0.95rem;
-            line-height: 1.7;
-            display: none;
-        }
-        .faq-item.active .faq-a {
-            display: block;
-        }
-        .faq-item.active .faq-q i {
-            transform: rotate(180deg);
-        }
-        .faq-item.active {
-            border-color: var(--gold);
-            background: var(--white);
-        }
-
-        /* ============================================================
-           STATS
+           OUR IMPACT (ANIMATED COUNTER STATS)
            ============================================================ */
         .help-section {
-            padding: 80px 0;
-            background: var(--off-white);
+            padding: 70px 0;
+            background: var(--white);
         }
         .help-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 8px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
+            max-width: 860px;
+            margin: 0 auto;
         }
         .help-item {
-            background: var(--white);
-            padding: 24px 16px;
+            background: var(--off-white);
+            padding: 26px 14px;
             border-radius: var(--radius-sm);
             text-align: center;
             border: 1px solid var(--border);
@@ -1451,122 +871,269 @@
             box-shadow: var(--shadow-sm);
         }
         .help-item .num {
-            font-size: 2.4rem;
+            font-size: clamp(2rem, 4vw, 2.7rem);
             font-weight: 800;
             color: var(--gold);
             line-height: 1;
-        }
-        .help-item .num .counter-suffix {
-            font-size: 1.6rem;
+            font-variant-numeric: tabular-nums;
         }
         .help-item .label {
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             color: var(--muted);
-            font-weight: 500;
-            margin-top: 4px;
+            font-weight: 600;
+            margin-top: 6px;
         }
 
         /* ============================================================
-           ENQUIRY
+           TEAM SECTION
+           ============================================================ */
+        .team-section {
+            padding: 70px 0;
+            background: var(--off-white);
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            max-width: 720px;
+            margin: 20px auto 0;
+        }
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+        .team-card .team-img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            background: var(--cream);
+        }
+        .team-card .team-info {
+            padding: 22px 18px;
+        }
+        .team-card .team-info h4 {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .team-card .team-info .role {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin: 3px 0 8px;
+        }
+        .team-card .team-info .bio {
+            color: var(--muted);
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+           TESTIMONIALS
+           ============================================================ */
+        .testimonials {
+            padding: 70px 0;
+            background: var(--white);
+        }
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .rating-stars {
+            color: var(--gold);
+            font-size: 1rem;
+        }
+        .testimonial-slider {
+            max-width: 760px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            touch-action: pan-y;
+        }
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .testimonial-item {
+            flex: 0 0 100%;
+            padding: 0 10px;
+        }
+        .testimonial-item .inner {
+            background: var(--off-white);
+            padding: 30px 22px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        .testimonial-item blockquote {
+            font-size: clamp(0.92rem, 2vw, 1.05rem);
+            font-style: italic;
+            color: var(--text);
+            line-height: 1.8;
+            margin-bottom: 14px;
+        }
+        .testimonial-item .author {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 0.92rem;
+        }
+        .testimonial-item .author span {
+            font-weight: 400;
+            color: var(--muted);
+        }
+
+        /* ============================================================
+           FAQ ACCORDION
+           ============================================================ */
+        .faq-section {
+            padding: 70px 0;
+            background: var(--off-white);
+        }
+        .faq-list {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-sm);
+            margin-bottom: 10px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: left;
+        }
+        .faq-item:hover {
+            border-color: var(--gold);
+        }
+        .faq-item .faq-q {
+            padding: 16px 18px;
+            font-weight: 600;
+            color: var(--navy);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            font-size: 0.95rem;
+        }
+        .faq-item .faq-q i {
+            color: var(--gold);
+            transition: transform 0.3s;
+        }
+        .faq-item .faq-a {
+            padding: 0 18px 16px;
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+            display: none;
+        }
+        .faq-item.active .faq-a {
+            display: block;
+        }
+        .faq-item.active .faq-q i {
+            transform: rotate(180deg);
+        }
+
+        /* ============================================================
+           ENQUIRY / CONTACT
            ============================================================ */
         .enquiry-section {
-            padding: 80px 0;
+            padding: 70px 0;
             background: var(--navy);
             color: var(--white);
         }
         .enquiry-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: start;
         }
         .enquiry-left h2 {
-            font-size: 2.4rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             font-weight: 800;
             line-height: 1.15;
-            margin-bottom: 12px;
-        }
-        .enquiry-left h2 .gold-text {
-            color: var(--gold);
+            margin-bottom: 10px;
         }
         .enquiry-left p {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.05rem;
-            margin-bottom: 28px;
-            max-width: 420px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+            margin-bottom: 24px;
         }
         .enquiry-contact .contact-item {
             display: flex;
             align-items: center;
             gap: 14px;
             margin-bottom: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            transition: var(--transition);
-        }
-        .enquiry-contact .contact-item:hover {
-            color: var(--gold);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.92rem;
         }
         .enquiry-contact .contact-item i {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.04);
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1rem;
             color: var(--gold);
-            transition: var(--transition);
-        }
-        .enquiry-contact .contact-item:hover i {
-            background: var(--gold);
-            color: var(--navy);
-        }
-        .enquiry-contact .contact-item a {
-            color: inherit;
+            font-size: 1rem;
+            flex-shrink: 0;
         }
         .enquiry-form {
             background: var(--white);
-            padding: 36px 32px;
+            padding: 30px 24px;
             border-radius: var(--radius);
             color: var(--text);
         }
         .enquiry-form h4 {
             font-size: 1.2rem;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--navy);
             margin-bottom: 4px;
         }
-        .enquiry-form>p {
+        .enquiry-form p {
             color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 18px;
         }
         .enquiry-form .form-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
         }
         .enquiry-form input,
         .enquiry-form select,
         .enquiry-form textarea {
             width: 100%;
-            padding: 14px 18px;
-            border: 2px solid var(--border);
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
             border-radius: var(--radius-sm);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.95rem;
-            transition: var(--transition);
+            font-family: inherit;
+            font-size: 0.9rem;
             background: var(--off-white);
-            margin-bottom: 14px;
+            margin-bottom: 10px;
+            transition: var(--transition);
         }
         .enquiry-form input:focus,
         .enquiry-form select:focus,
         .enquiry-form textarea:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(212, 163, 41, 0.04);
             background: var(--white);
+            box-shadow: 0 0 0 3px rgba(212, 163, 41, 0.12);
         }
         .enquiry-form textarea {
             min-height: 80px;
@@ -1574,118 +1141,63 @@
         }
         .enquiry-form .btn-gold {
             width: 100%;
-            justify-content: center;
-            font-size: 1.05rem;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 860px) {
             .enquiry-wrapper {
                 grid-template-columns: 1fr;
             }
-            .enquiry-left {
-                text-align: center;
-            }
-            .enquiry-left p {
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .enquiry-contact .contact-item {
-                justify-content: center;
-            }
-        }
-        @media (max-width: 480px) {
             .enquiry-form .form-row {
                 grid-template-columns: 1fr;
-            }
-            .enquiry-form {
-                padding: 24px 18px;
             }
         }
 
         /* ============================================================
-           FOOTER — FIXED white line removed
+           FOOTER (With Circular Logo)
            ============================================================ */
         footer {
             background: var(--navy-dark);
-            color: rgba(255, 255, 255, 0.5);
-            padding: 50px 0 0;
-            border-top: none;
-            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.6);
+            padding: 50px 0 20px;
         }
         footer .container {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            padding-bottom: 0;
+            gap: 36px;
         }
-        footer .brand .logo-text {
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        .footer-logo {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+            box-shadow: 0 2px 10px rgba(212, 163, 41, 0.2);
+        }
+        .footer-brand .logo-text {
             color: var(--white);
             font-weight: 800;
-            font-size: 1.2rem;
-            letter-spacing: -0.3px;
+            font-size: 1.25rem;
         }
-        footer .brand .logo-text span {
+        .footer-brand .logo-text span {
             color: var(--gold);
         }
-        footer .brand .brand-desc {
-            font-size: 0.9rem;
-            line-height: 1.8;
-            margin-top: 10px;
-            max-width: 320px;
-            color: rgba(255, 255, 255, 0.45);
-        }
-        footer .brand .contact-mini {
-            margin-top: 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        footer .brand .contact-mini a {
-            color: rgba(255, 255, 255, 0.45);
+        footer .brand-desc {
             font-size: 0.85rem;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        footer .brand .contact-mini a i {
-            color: var(--gold);
-            width: 18px;
-            font-size: 0.8rem;
-        }
-        footer .brand .contact-mini a:hover {
-            color: var(--gold);
-        }
-        footer .brand .social-icons {
-            display: flex;
-            gap: 10px;
-            margin-top: 16px;
-        }
-        footer .brand .social-icons a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.04);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            color: rgba(255, 255, 255, 0.4);
-        }
-        footer .brand .social-icons a:hover {
-            background: var(--gold);
-            color: var(--navy);
-            transform: translateY(-3px);
-            border-color: var(--gold);
+            line-height: 1.7;
+            margin-bottom: 14px;
+            color: rgba(255, 255, 255, 0.5);
         }
         footer h5 {
             color: var(--white);
+            font-size: 0.92rem;
             font-weight: 700;
-            font-size: 0.9rem;
             margin-bottom: 14px;
-            letter-spacing: 0.3px;
         }
         footer ul {
             list-style: none;
@@ -1695,125 +1207,98 @@
         }
         footer ul li a {
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
+            color: rgba(255, 255, 255, 0.5);
             transition: var(--transition);
-            display: inline-block;
         }
         footer ul li a:hover {
             color: var(--gold);
-            transform: translateX(4px);
+            padding-left: 3px;
         }
-        footer .footer-cta {
-            margin-top: 16px;
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 14px;
         }
-        footer .footer-cta .btn-gold {
-            padding: 10px 24px;
-            font-size: 0.85rem;
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.7);
+            transition: var(--transition);
+        }
+        .social-icons a:hover {
             background: var(--gold);
-            color: var(--white);
-            box-shadow: none;
-        }
-        footer .footer-cta .btn-gold:hover {
-            background: var(--gold-light);
-            color: var(--white);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(212, 163, 41, 0.20);
-        }
-        footer .footer-cta .btn-gold i {
-            color: var(--white);
+            color: var(--navy);
+            transform: translateY(-3px);
         }
         footer .bottom {
             grid-column: 1 / -1;
-            border-top: 1px solid rgba(255, 255, 255, 0.04);
-            padding-top: 18px;
-            margin-top: 20px;
-            padding-bottom: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 20px;
+            margin-top: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.25);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.4);
         }
         footer .bottom .legal-link {
-            color: rgba(255, 255, 255, 0.25);
-            cursor: pointer;
-            transition: var(--transition);
-            border-bottom: 1px dashed transparent;
-        }
-        footer .bottom .legal-link:hover {
             color: var(--gold);
-            border-bottom-color: var(--gold);
-        }
-        footer .bottom .sep {
-            color: rgba(255, 255, 255, 0.1);
-            margin: 0 6px;
+            cursor: pointer;
+            text-decoration: underline;
         }
 
-        @media (max-width: 1024px) {
+        @media (max-width: 860px) {
             footer .container {
                 grid-template-columns: 1fr 1fr;
-                gap: 30px;
             }
         }
-        @media (max-width: 768px) {
+        @media (max-width: 480px) {
             footer .container {
                 grid-template-columns: 1fr;
-                gap: 24px;
-            }
-            footer .brand .brand-desc {
-                max-width: 100%;
-            }
-            footer .bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 4px;
             }
         }
 
         /* ============================================================
-           FLOATING WHATSAPP BUTTON
+           FLOATING WHATSAPP & STICKY BOTTOM (Mobile Optimized)
            ============================================================ */
         .whatsapp-float {
             position: fixed;
-            bottom: 90px;
+            bottom: 30px;
             right: 20px;
             z-index: 997;
             background: #25D366;
             color: #fff;
-            width: 60px;
-            height: 60px;
+            width: 54px;
+            height: 54px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.3);
+            font-size: 1.8rem;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45);
             transition: var(--transition);
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
         }
         .whatsapp-float:hover {
             transform: scale(1.08);
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
         }
-
-        /* ============================================================
-           STICKY BOTTOM
-           ============================================================ */
         .sticky-bottom {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
             background: var(--white);
-            padding: 10px 16px;
+            padding: 8px 16px calc(8px + env(safe-area-inset-bottom));
             display: none;
             justify-content: space-around;
             align-items: center;
-            box-shadow: 0 -4px 20px rgba(7, 27, 58, 0.06);
+            box-shadow: 0 -4px 20px rgba(7, 27, 58, 0.08);
             border-top: 1px solid var(--border);
             z-index: 998;
         }
@@ -1821,49 +1306,41 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-size: 0.65rem;
+            font-size: 0.72rem;
             font-weight: 600;
-            color: var(--muted);
-            transition: var(--transition);
+            color: var(--navy);
             gap: 2px;
         }
         .sticky-bottom a i {
-            font-size: 1.2rem;
-            color: var(--navy);
-        }
-        .sticky-bottom a:hover {
-            color: var(--gold);
-        }
-        .sticky-bottom a:hover i {
+            font-size: 1.15rem;
             color: var(--gold);
         }
         .sticky-bottom .cta-sticky {
             background: var(--gold);
-            color: var(--white);
+            color: var(--white) !important;
             padding: 8px 18px;
             border-radius: var(--radius-full);
-            font-weight: 700;
-            font-size: 0.75rem;
             flex-direction: row;
             gap: 6px;
-            box-shadow: 0 4px 16px rgba(212, 163, 41, 0.20);
+            font-size: 0.8rem;
         }
         .sticky-bottom .cta-sticky i {
             color: var(--white);
         }
-        .sticky-bottom .cta-sticky:hover {
-            background: var(--gold-light);
-        }
+
         @media (max-width: 768px) {
             .sticky-bottom {
                 display: flex;
             }
             .whatsapp-float {
-                bottom: 80px;
-                width: 50px;
-                height: 50px;
-                font-size: 1.6rem;
+                bottom: calc(72px + env(safe-area-inset-bottom));
+                width: 48px;
+                height: 48px;
+                font-size: 1.5rem;
                 right: 14px;
+            }
+            body {
+                padding-bottom: 60px;
             }
         }
 
@@ -1879,121 +1356,64 @@
             z-index: 9999;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 20px;
         }
         .legal-modal.active {
             display: flex;
         }
         .legal-modal .modal-content {
             background: var(--white);
-            max-width: 480px;
+            max-width: 450px;
             width: 100%;
             border-radius: var(--radius);
-            padding: 32px;
+            padding: 28px;
             box-shadow: var(--shadow-lg);
             position: relative;
         }
-        .legal-modal .modal-content .close {
+        .legal-modal .close {
             position: absolute;
             top: 12px;
             right: 16px;
             font-size: 1.4rem;
             cursor: pointer;
-            color: var(--muted);
-            transition: var(--transition);
-            background: none;
             border: none;
+            background: none;
+            color: var(--muted);
         }
-        .legal-modal .modal-content .close:hover {
-            color: var(--navy);
-        }
-        .legal-modal .modal-content h3 {
+        .legal-modal h3 {
             font-size: 1.2rem;
             font-weight: 800;
             color: var(--navy);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
-        .legal-modal .modal-content .detail-row {
+        .legal-modal .detail-row {
             display: flex;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid var(--border);
-            font-size: 0.85rem;
-        }
-        .legal-modal .modal-content .detail-row strong {
-            color: var(--navy);
-        }
-        .legal-modal .modal-content .detail-row span {
-            color: var(--muted);
-        }
-        .legal-modal .modal-content .legal-note {
-            margin-top: 14px;
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
-
-        /* ============================================================
-           SCROLL REVEAL
-           ============================================================ */
-        .reveal-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .stagger-children>* {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .stagger-children.visible>*:nth-child(1) {
-            transition-delay: 0.05s;
-        }
-        .stagger-children.visible>*:nth-child(2) {
-            transition-delay: 0.12s;
-        }
-        .stagger-children.visible>*:nth-child(3) {
-            transition-delay: 0.19s;
-        }
-        .stagger-children.visible>*:nth-child(4) {
-            transition-delay: 0.26s;
-        }
-        .stagger-children.visible>*:nth-child(5) {
-            transition-delay: 0.33s;
-        }
-        .stagger-children.visible>*:nth-child(6) {
-            transition-delay: 0.40s;
-        }
-        .stagger-children.visible>*:nth-child(7) {
-            transition-delay: 0.47s;
-        }
-        .stagger-children.visible>*:nth-child(8) {
-            transition-delay: 0.54s;
-        }
-        .stagger-children.visible>* {
-            opacity: 1;
-            transform: translateY(0);
+            font-size: 0.86rem;
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
+    <!-- ===== HEADER WITH BIG CIRCULAR LOGO ===== -->
     <header id="header">
         <div class="container">
-            <div class="logo">
-                <div class="logo-icon">A</div>
-                <div class="logo-text">Amygdala<span>.</span></div>
-            </div>
+            <a href="#home" class="logo" aria-label="Amygdala Home">
+                <img src="https://i.ibb.co/nsGBtnY1/Whats-App-Image-2026-08-24-at-5-05-54-PM.jpg" alt="Amygdala Logo" />
+                <div class="logo-brand-title">
+                    Amygdala
+                    <span>Consultancy</span>
+                </div>
+            </a>
             <nav id="mainNav">
                 <a href="#home" class="active">Home</a>
                 <a href="#countries">MBBS Abroad</a>
                 <a href="#universities">Universities</a>
                 <a href="#services">Services</a>
                 <a href="#process">Journey</a>
+                <a href="#team">Team</a>
                 <a href="#enquiry">Contact</a>
             </nav>
             <div class="header-actions">
@@ -2003,7 +1423,7 @@
                 <a href="#enquiry" class="nav-cta">
                     <i class="fas fa-calendar-check"></i> Free Counselling
                 </a>
-                <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -2013,17 +1433,11 @@
     <!-- ===== HERO ===== -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-content reveal-up">
                 <div class="pre-title">From Aspiration To Admission</div>
-                <h1>
-                    <span class="word">Unlock</span>
-                    <span class="word">Your</span>
-                    <span class="word gold-text">Medical</span>
-                    <span class="word gold-text">Dream</span>
-                </h1>
+                <h1>Unlock Your <span class="gold-text">Medical Dream</span></h1>
                 <p class="sub-text">
-                    Complete guidance for MBBS admissions in India and abroad —
-                    from university selection and applications to documentation and visa support.
+                    Complete guidance for MBBS admissions in India and abroad — from university selection and applications to documentation and visa support.
                 </p>
                 <div class="hero-buttons">
                     <a href="#enquiry" class="btn-gold">
@@ -2033,183 +1447,154 @@
                         <i class="fas fa-globe-asia"></i> Explore Universities
                     </a>
                 </div>
-                <div class="hero-progress">
-                    <div class="fill"></div>
-                </div>
             </div>
         </div>
     </section>
 
     <!-- ===== WHY AMYGDALA ===== -->
-    <section class="why-amygdala" id="services">
+    <section class="why-amygdala" id="about">
         <div class="container text-center">
             <span class="section-badge">Why Amygdala</span>
             <h2 class="section-title reveal-up">Guidance That Goes <span class="highlight">Beyond Admission</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">We help students make informed decisions about medical education — from choosing the right university to completing the admission and visa process.</p>
+            <p class="section-sub reveal-up">We help students make informed decisions about medical education — from choosing the right university to completing admission and visa procedures.</p>
             <div class="why-grid stagger-children">
                 <div class="why-card">
                     <span class="badge">Trusted</span>
                     <div class="icon"><i class="fas fa-check-circle"></i></div>
                     <h4>Verified Options</h4>
-                    <p>Universities carefully evaluated for quality and accreditation.</p>
+                    <p>Universities carefully evaluated for quality and international accreditation.</p>
                 </div>
                 <div class="why-card">
                     <span class="badge">Clear</span>
                     <div class="icon"><i class="fas fa-rupee-sign"></i></div>
                     <h4>Transparent Fees</h4>
-                    <p>No confusing cost structure — everything is clear upfront.</p>
+                    <p>Zero hidden charges and completely transparent cost breakdowns upfront.</p>
                 </div>
                 <div class="why-card">
                     <span class="badge">Reliable</span>
                     <div class="icon"><i class="fas fa-route"></i></div>
                     <h4>Complete Guidance</h4>
-                    <p>One team from application to departure — no handoffs.</p>
+                    <p>One dedicated team from application to departure — no middleman handoffs.</p>
                 </div>
                 <div class="why-card">
                     <span class="badge">Personal</span>
                     <div class="icon"><i class="fas fa-user-check"></i></div>
                     <h4>Personal Counselling</h4>
-                    <p>Guidance based on the student's profile and aspirations.</p>
+                    <p>Tailored recommendations aligned with student profile, budget, and aspirations.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===== COUNTRIES SLIDER ===== -->
-    <section class="slider-section countries" id="countries" style="background:var(--off-white);">
+    <section class="slider-section" id="countries" style="background:var(--off-white);">
         <div class="container text-center">
             <span class="section-badge">Study Destinations</span>
             <h2 class="section-title reveal-up">Explore <span class="highlight">MBBS Abroad</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">Top medical universities across the globe — carefully selected for you.</p>
-            <div class="slider-container" id="countrySlider">
+            <p class="section-sub reveal-up">Top medical universities across the globe — carefully shortlisted for you.</p>
+            <div class="slider-container">
                 <div class="slider-track" id="countryTrack">
                     <div class="country-slide">
                         <div class="flag">🇷🇺</div>
                         <h5>Russia</h5>
                         <p>Kazan Federal, RUDN, Kursk</p>
                         <div class="uni-list">10+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇬🇪</div>
                         <h5>Georgia</h5>
                         <p>Tbilisi State, UG, SEU</p>
                         <div class="uni-list">8+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇰🇬</div>
                         <h5>Kyrgyzstan</h5>
                         <p>Osh State Medical University</p>
                         <div class="uni-list">6+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇰🇿</div>
                         <h5>Kazakhstan</h5>
-                        <p>West Kazakhstan State Medical University</p>
+                        <p>West Kazakhstan State Medical Univ.</p>
                         <div class="uni-list">5+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇦🇿</div>
                         <h5>Azerbaijan</h5>
                         <p>Azerbaijan Medical University</p>
                         <div class="uni-list">4+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇵🇱</div>
                         <h5>Poland</h5>
                         <p>Medical University of Bialystok</p>
                         <div class="uni-list">3+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                     <div class="country-slide">
                         <div class="flag">🇭🇺</div>
                         <h5>Hungary</h5>
                         <p>University of Debrecen</p>
                         <div class="uni-list">3+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="country-slide">
-                        <div class="flag">🇧🇦</div>
-                        <h5>Bosnia &amp; Herzegovina</h5>
-                        <p>University of East Sarajevo</p>
-                        <div class="uni-list">2+ universities</div>
-                        <a href="#universities" class="explore-link">Explore <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <button class="slider-btn prev" id="countryPrev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next" id="countryNext"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn prev" id="countryPrev" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="countryNext" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
     <!-- ===== UNIVERSITIES SLIDER ===== -->
-    <section class="slider-section universities" id="universities" style="background:var(--white);">
+    <section class="slider-section" id="universities" style="background:var(--white);">
         <div class="container text-center">
             <span class="section-badge">University Options</span>
             <h2 class="section-title reveal-up">Explore <span class="highlight">University Options</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">Genuine, accredited universities we work with.</p>
-            <div class="slider-container" id="uniSlider">
+            <p class="section-sub reveal-up">Genuine, accredited universities we partner with.</p>
+            <div class="slider-container">
                 <div class="slider-track" id="uniTrack">
                     <div class="uni-slide">
                         <div class="uni-logo">KFU</div>
                         <div class="uni-name">Kazan Federal University</div>
                         <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Russia</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="uni-detail"><span>MBBS</span> 6-Year Program</div>
                     </div>
                     <div class="uni-slide">
                         <div class="uni-logo">RUDN</div>
                         <div class="uni-name">RUDN University</div>
                         <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Russia</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="uni-detail"><span>MBBS</span> 6-Year Program</div>
                     </div>
                     <div class="uni-slide">
                         <div class="uni-logo">ASMU</div>
                         <div class="uni-name">Baku State Medical University</div>
                         <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Azerbaijan</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="uni-detail"><span>MBBS</span> 6-Year Program</div>
                     </div>
                     <div class="uni-slide">
                         <div class="uni-logo">TMA</div>
                         <div class="uni-name">Tashkent Medical Academy</div>
                         <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Uzbekistan</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="uni-detail"><span>MBBS</span> 6-Year Program</div>
                     </div>
                     <div class="uni-slide">
                         <div class="uni-logo">SMU</div>
                         <div class="uni-name">Sechenov University</div>
                         <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Russia</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="uni-slide">
-                        <div class="uni-logo">MSU</div>
-                        <div class="uni-name">Lomonosov MSU</div>
-                        <div class="uni-country"><i class="fas fa-map-marker-alt" style="color:var(--gold);"></i> Russia</div>
-                        <div class="uni-detail"><span>MBBS</span> 6-year program</div>
-                        <a href="#enquiry" class="view-link">View Details <i class="fas fa-arrow-right"></i></a>
+                        <div class="uni-detail"><span>MBBS</span> 6-Year Program</div>
                     </div>
                 </div>
-                <button class="slider-btn prev" id="uniPrev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next" id="uniNext"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn prev" id="uniPrev" aria-label="Previous university"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="uniNext" aria-label="Next university"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
     <!-- ===== SERVICES SLIDER ===== -->
-    <section class="slider-section services-section" id="services" style="background:var(--off-white);">
+    <section class="slider-section" id="services" style="background:var(--off-white);">
         <div class="container text-center">
             <span class="section-badge">What We Do</span>
             <h2 class="section-title reveal-up">Our <span class="highlight">Services</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">End-to-end support for your medical education journey.</p>
-            <div class="slider-container" id="serviceSlider">
+            <p class="section-sub reveal-up">End-to-end support for your entire medical education journey.</p>
+            <div class="slider-container">
                 <div class="slider-track" id="serviceTrack">
                     <div class="service-slide">
                         <div class="icon"><i class="fas fa-stethoscope"></i></div>
@@ -2217,38 +1602,33 @@
                         <p>Top universities across 10+ countries</p>
                     </div>
                     <div class="service-slide">
-                        <div class="icon"><i class="fas fa-flag-india"></i></div>
+                        <div class="icon"><i class="fas fa-hospital-alt"></i></div>
                         <h5>MBBS India</h5>
                         <p>Admissions in India's top medical colleges</p>
                     </div>
                     <div class="service-slide">
                         <div class="icon"><i class="fas fa-search"></i></div>
                         <h5>University Selection</h5>
-                        <p>Personalized university matching</p>
+                        <p>Personalized university profile matching</p>
                     </div>
                     <div class="service-slide">
                         <div class="icon"><i class="fas fa-file-alt"></i></div>
                         <h5>Admission Processing</h5>
-                        <p>Complete application support</p>
-                    </div>
-                    <div class="service-slide">
-                        <div class="icon"><i class="fas fa-folder-open"></i></div>
-                        <h5>Documentation</h5>
-                        <p>Visa &amp; document preparation</p>
+                        <p>Complete documentation & application support</p>
                     </div>
                     <div class="service-slide">
                         <div class="icon"><i class="fas fa-passport"></i></div>
                         <h5>Visa Guidance</h5>
-                        <p>End-to-end visa processing</p>
+                        <p>End-to-end visa filing & mock interviews</p>
                     </div>
                     <div class="service-slide">
                         <div class="icon"><i class="fas fa-plane-departure"></i></div>
                         <h5>Pre-Departure Support</h5>
-                        <p>Accommodation &amp; travel assistance</p>
+                        <p>Accommodation & travel assistance</p>
                     </div>
                 </div>
-                <button class="slider-btn prev" id="servicePrev"><i class="fas fa-chevron-left"></i></button>
-                <button class="slider-btn next" id="serviceNext"><i class="fas fa-chevron-right"></i></button>
+                <button class="slider-btn prev" id="servicePrev" aria-label="Previous service"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="serviceNext" aria-label="Next service"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
@@ -2258,181 +1638,176 @@
         <div class="container text-center">
             <span class="section-badge">How We Work</span>
             <h2 class="section-title reveal-up">Your Journey With <span class="highlight">Amygdala</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">A simple, transparent 6-step journey from counselling to departure.</p>
+            <p class="section-sub reveal-up">A simple, transparent 6-step roadmap from counselling to departure.</p>
             <div class="process-timeline" id="processTimeline">
                 <div class="fill" id="timelineFill"></div>
                 <div class="process-step-item">
                     <div class="step-num">01</div>
                     <div class="step-content">
-                        <h5>Counselling</h5>
-                        <p>Student profile samjho — understand your goals, preferences, and budget.</p>
+                        <h5>Profile Evaluation & Counselling</h5>
+                        <p>In-depth assessment of your academic profile, preferences, and budget.</p>
                     </div>
                 </div>
                 <div class="process-step-item">
                     <div class="step-num">02</div>
                     <div class="step-content">
-                        <h5>University Selection</h5>
-                        <p>Suitable options shortlist — we present the best-fit universities for you.</p>
+                        <h5>University Shortlisting</h5>
+                        <p>Shortlisting genuine, accredited universities that match your goals.</p>
                     </div>
                 </div>
                 <div class="process-step-item">
                     <div class="step-num">03</div>
                     <div class="step-content">
-                        <h5>Application</h5>
-                        <p>Documentation &amp; application — we guide you through every form and requirement.</p>
+                        <h5>Application & Documentation</h5>
+                        <p>Comprehensive support in preparing transcripts, eligibility, and application forms.</p>
                     </div>
                 </div>
                 <div class="process-step-item">
                     <div class="step-num">04</div>
                     <div class="step-content">
-                        <h5>Admission</h5>
-                        <p>Offer/admission process — we help you secure your seat.</p>
+                        <h5>Admission Letter</h5>
+                        <p>Securing your official admission offer and university invitation.</p>
                     </div>
                 </div>
                 <div class="process-step-item">
                     <div class="step-num">05</div>
                     <div class="step-content">
-                        <h5>Visa Guidance</h5>
-                        <p>Visa documentation support — complete assistance for visa approval.</p>
+                        <h5>Visa Assistance</h5>
+                        <p>Apostille, translation, embassy paperwork, and visa interview preparation.</p>
                     </div>
                 </div>
                 <div class="process-step-item">
                     <div class="step-num">06</div>
                     <div class="step-content">
-                        <h5>Pre-Departure</h5>
-                        <p>Travel &amp; joining guidance — you're ready to start your medical journey.</p>
+                        <h5>Pre-Departure & Fly</h5>
+                        <p>Airport pickups, hostel accommodation, and campus onboarding.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== STATS ===== -->
+    <!-- ===== OUR IMPACT (ANIMATED NUMBERS) ===== -->
     <section class="help-section" id="help">
         <div class="container text-center">
-            <span class="section-badge">What We Help With</span>
+            <span class="section-badge">Our Track Record</span>
             <h2 class="section-title reveal-up">Our <span class="highlight">Impact</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">Guiding students to their dream medical careers.</p>
+            <p class="section-sub reveal-up">Guiding aspiring doctors toward successful international careers.</p>
             <div class="help-grid stagger-children">
                 <div class="help-item">
-                    <div class="num" data-count="500">0<span class="counter-suffix">+</span></div>
+                    <div class="num" data-target="500" data-suffix="+">0+</div>
                     <div class="label">Students Guided</div>
                 </div>
                 <div class="help-item">
-                    <div class="num" data-count="20">0<span class="counter-suffix">+</span></div>
-                    <div class="label">University Options</div>
+                    <div class="num" data-target="20" data-suffix="+">0+</div>
+                    <div class="label">University Partners</div>
                 </div>
                 <div class="help-item">
-                    <div class="num" data-count="10">0<span class="counter-suffix">+</span></div>
+                    <div class="num" data-target="10" data-suffix="+">0+</div>
                     <div class="label">Countries</div>
                 </div>
                 <div class="help-item">
-                    <div class="num" data-count="95">0<span class="counter-suffix">%</span></div>
+                    <div class="num" data-target="100" data-suffix="%">0%</div>
                     <div class="label">Transparent Process</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== GALLERY ===== -->
-    <section class="gallery-section" id="gallery">
+    <!-- ===== TEAM SECTION ===== -->
+    <section class="team-section" id="team">
         <div class="container text-center">
-            <span class="section-badge">Inside Amygdala</span>
-            <h2 class="section-title reveal-up">Life With <span class="highlight">Amygdala</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">Moments from counselling, university visits, and student journeys.</p>
-            <div class="gallery-slider" id="gallerySlider">
-                <div class="gallery-track" id="galleryTrack">
-                    <div class="gallery-card">
-                        <span class="badge">Office</span>
-                        <div class="gallery-image"><i class="fas fa-building"></i><span class="image-label">Office</span></div>
-                        <div class="gallery-info"><h5>Our Office</h5><p>Where your journey begins</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Counselling</span>
-                        <div class="gallery-image"><i class="fas fa-handshake"></i><span class="image-label">Counselling</span></div>
-                        <div class="gallery-info"><h5>Counselling Sessions</h5><p>Understanding your goals</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Students</span>
-                        <div class="gallery-image"><i class="fas fa-users"></i><span class="image-label">Students</span></div>
-                        <div class="gallery-info"><h5>Student Interactions</h5><p>Building trust and clarity</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Visits</span>
-                        <div class="gallery-image"><i class="fas fa-university"></i><span class="image-label">University Visits</span></div>
-                        <div class="gallery-info"><h5>University Visits</h5><p>Exploring partner universities</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Events</span>
-                        <div class="gallery-image"><i class="fas fa-calendar-alt"></i><span class="image-label">Events</span></div>
-                        <div class="gallery-info"><h5>Events</h5><p>Connecting with students</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Visa</span>
-                        <div class="gallery-image"><i class="fas fa-passport"></i><span class="image-label">Visa Moments</span></div>
-                        <div class="gallery-info"><h5>Visa Moments</h5><p>Celebrating approvals</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Docs</span>
-                        <div class="gallery-image"><i class="fas fa-file-signature"></i><span class="image-label">Documentation</span></div>
-                        <div class="gallery-info"><h5>Documentation</h5><p>Careful preparation</p></div>
-                    </div>
-                    <div class="gallery-card">
-                        <span class="badge">Departure</span>
-                        <div class="gallery-image"><i class="fas fa-plane"></i><span class="image-label">Departure</span></div>
-                        <div class="gallery-info"><h5>Departure</h5><p>Ready to fly</p></div>
+            <span class="section-badge">Meet Our Team</span>
+            <h2 class="section-title reveal-up">Your <span class="highlight">Counselling Team</span></h2>
+            <p class="section-sub reveal-up">Experienced professionals dedicated to your medical career success.</p>
+            <div class="team-grid stagger-children">
+                <div class="team-card">
+                    <img src="https://i.ibb.co/G4vPNHZ9/Whats-App-Image-2026-08-24-at-5-05-55-PM.jpg" alt="Dr. Adithya Kin Ravi - Founder" class="team-img" />
+                    <div class="team-info">
+                        <h4>Dr. Adithya Kin Ravi</h4>
+                        <div class="role">Founder & Medical Education Consultant</div>
+                        <p class="bio">Passionate about guiding students to the right medical universities with transparency and integrity.</p>
                     </div>
                 </div>
-                <button class="gallery-btn prev" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
-                <button class="gallery-btn next" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
+                <div class="team-card">
+                    <img src="https://i.ibb.co/TMKHYPpP/Whats-App-Image-2026-08-24-at-5-18-14-PM.jpg" alt="Sreerag V - Co-Founder" class="team-img" />
+                    <div class="team-info">
+                        <h4>Sreerag V</h4>
+                        <div class="role">Co-Founder & Operations</div>
+                        <p class="bio">Committed to making the admission process seamless, honest, and student-first.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== TESTIMONIALS with Rating ===== -->
+    <!-- ===== GALLERY ===== -->
+    <section class="slider-section" id="gallery" style="background:var(--white);">
+        <div class="container text-center">
+            <span class="section-badge">Inside Amygdala</span>
+            <h2 class="section-title reveal-up">Life With <span class="highlight">Amygdala</span></h2>
+            <p class="section-sub reveal-up">Moments from counselling sessions, campus tours, and student departures.</p>
+            <div class="slider-container">
+                <div class="slider-track" id="galleryTrack">
+                    <div class="gallery-card">
+                        <div class="gallery-image"><i class="fas fa-building"></i><span class="image-label">Office</span></div>
+                        <div class="gallery-info"><h5>Our Office</h5><p>Where your journey begins</p></div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-image"><i class="fas fa-handshake"></i><span class="image-label">Counselling</span></div>
+                        <div class="gallery-info"><h5>Counselling Sessions</h5><p>Understanding your goals</p></div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-image"><i class="fas fa-users"></i><span class="image-label">Students</span></div>
+                        <div class="gallery-info"><h5>Student Interactions</h5><p>Building trust and clarity</p></div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-image"><i class="fas fa-university"></i><span class="image-label">University Visits</span></div>
+                        <div class="gallery-info"><h5>University Visits</h5><p>Exploring partner campuses</p></div>
+                    </div>
+                    <div class="gallery-card">
+                        <div class="gallery-image"><i class="fas fa-passport"></i><span class="image-label">Visa</span></div>
+                        <div class="gallery-info"><h5>Visa Moments</h5><p>Celebrating approvals</p></div>
+                    </div>
+                </div>
+                <button class="slider-btn prev" id="galleryPrev" aria-label="Previous gallery item"><i class="fas fa-chevron-left"></i></button>
+                <button class="slider-btn next" id="galleryNext" aria-label="Next gallery item"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
     <section class="testimonials" id="testimonials">
         <div class="container text-center">
             <span class="section-badge">Student Stories</span>
             <h2 class="section-title reveal-up">What Our <span class="highlight">Students Say</span></h2>
-            <div class="rating-summary">
+            <div class="rating-summary reveal-up">
                 <div class="rating-stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <strong>4.9/5</strong>
-                <span>Based on Student Experiences</span>
+                <strong>4.9 / 5.0</strong>
+                <span style="color:var(--muted); font-size:0.88rem;">(Based on 100+ Reviews)</span>
             </div>
-            <div class="testimonial-slider" id="testimonialSlider">
+            <div class="testimonial-slider">
                 <div class="testimonial-track" id="testimonialTrack">
                     <div class="testimonial-item">
                         <div class="inner">
-                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <blockquote>"The team at Amygdala made the entire process so smooth. From university selection to visa approval, they were with me every step."</blockquote>
                             <div class="author">— Student <span>| MBBS in Georgia</span></div>
                         </div>
                     </div>
                     <div class="testimonial-item">
                         <div class="inner">
-                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <blockquote>"Completely transparent process. No hidden fees, no surprises. I felt confident and well-informed throughout."</blockquote>
                             <div class="author">— Student <span>| MBBS in Kyrgyzstan</span></div>
                         </div>
                     </div>
                     <div class="testimonial-item">
                         <div class="inner">
-                            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
                             <blockquote>"Dr. Adithya and Sreerag were incredibly helpful. They answered all my questions and made sure I was comfortable with every decision."</blockquote>
                             <div class="author">— Student <span>| MBBS in Russia</span></div>
                         </div>
                     </div>
-                </div>
-                <div class="testimonial-controls">
-                    <button class="testimonial-btn" id="testimonialPrev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="testimonial-dots" id="testimonialDots"></div>
-                    <button class="testimonial-btn" id="testimonialNext"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
@@ -2443,42 +1818,35 @@
         <div class="container text-center">
             <span class="section-badge">FAQs</span>
             <h2 class="section-title reveal-up">Frequently Asked <span class="highlight">Questions</span></h2>
-            <p class="section-sub reveal-up" style="transition-delay:0.1s;">Quick answers to the most common questions about studying MBBS abroad.</p>
-            <div class="faq-list stagger-children">
+            <p class="section-sub reveal-up">Quick answers to common queries about studying MBBS abroad.</p>
+            <div class="faq-list">
                 <div class="faq-item">
                     <div class="faq-q">
                         <span>What documents are required for MBBS abroad?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-a">Typically, you'll need your 10+2 marksheet, NEET scorecard, passport, birth certificate, and medical fitness certificate. We'll guide you through the complete list.</div>
+                    <div class="faq-a">Typically, you will need your 10th and 12th marksheets, NEET scorecard, valid passport, passport photos, and a medical fitness certificate. We will assist you with the checklist.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">
                         <span>How much does MBBS abroad cost?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-a">Tuition fees vary by country and university, typically ranging from $3,000 to $12,000 per year. We provide transparent fee breakdowns for each university.</div>
+                    <div class="faq-a">Tuition fees vary by country and university, typically ranging from $3,000 to $8,000 per year. We provide exact fee structures upfront.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">
-                        <span>Which countries are suitable for Indian students?</span>
+                        <span>Which countries are popular for Indian students?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-a">Popular destinations include Russia, Georgia, Kyrgyzstan, Kazakhstan, Azerbaijan, Poland, Hungary, and more. We help you choose based on your budget and preferences.</div>
+                    <div class="faq-a">Russia, Georgia, Kyrgyzstan, Kazakhstan, Uzbekistan, and Poland are among the most sought-after destinations due to NMC compliance and affordable budgets.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-q">
-                        <span>Do you provide visa assistance?</span>
+                        <span>Do you provide full visa assistance?</span>
                         <i class="fas fa-chevron-down"></i>
                     </div>
-                    <div class="faq-a">Yes, we provide complete visa guidance, including document preparation, application support, and interview preparation.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-q">
-                        <span>What is included in your service fee?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-a">Our service fee covers university selection, application processing, documentation support, visa guidance, and pre-departure assistance. We keep it transparent and upfront.</div>
+                    <div class="faq-a">Yes, we provide end-to-end visa guidance, including document apostille, translation, embassy submission, and pre-departure briefings.</div>
                 </div>
             </div>
         </div>
@@ -2488,9 +1856,9 @@
     <section class="enquiry-section" id="enquiry">
         <div class="container">
             <div class="enquiry-wrapper">
-                <div class="enquiry-left">
-                    <h2>Start Your <span class="gold-text">Medical Journey</span></h2>
-                    <p>Get in touch with us today and take the first step toward your medical career abroad.</p>
+                <div class="enquiry-left reveal-up">
+                    <h2>Start Your <span style="color:var(--gold);">Medical Journey</span></h2>
+                    <p>Connect with our expert counsellors today and take the first confident step toward your global medical career.</p>
                     <div class="enquiry-contact">
                         <div class="contact-item">
                             <i class="fas fa-phone-alt"></i>
@@ -2498,7 +1866,7 @@
                         </div>
                         <div class="contact-item">
                             <i class="fab fa-whatsapp"></i>
-                            <a href="https://wa.me/919544529928" target="_blank">WhatsApp Us</a>
+                            <a href="https://wa.me/919544529928" target="_blank" rel="noopener">WhatsApp Us (+91 95445 29928)</a>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
@@ -2506,38 +1874,37 @@
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>JSR20, Adithya, Sun Dale, Mottamoodu,<br />Pallichal, Thiruvananthapuram, Kerala - 695020</span>
+                            <span>JSR20, Adithya, Sun Dale, Mottamoodu, Pallichal, Thiruvananthapuram, Kerala - 695020</span>
                         </div>
                     </div>
                 </div>
-                <div class="enquiry-form">
+                <div class="enquiry-form reveal-up">
                     <h4>Get Free Counselling</h4>
-                    <p>Fill in your details and we'll get back to you within 24 hours.</p>
+                    <p>Submit your details and our team will get in touch within 24 hours.</p>
                     <form id="enquiryForm">
-                        <input type="text" placeholder="Full Name" required />
-                        <input type="tel" placeholder="Phone Number" required />
+                        <input type="text" id="formName" placeholder="Full Name" required />
+                        <input type="tel" id="formPhone" placeholder="Phone Number" required />
                         <div class="form-row">
-                            <input type="email" placeholder="Email Address" />
-                            <select>
+                            <input type="email" id="formEmail" placeholder="Email Address" />
+                            <select id="formCountry">
                                 <option value="">Preferred Country</option>
-                                <option value="russia">Russia</option>
-                                <option value="georgia">Georgia</option>
-                                <option value="kyrgyzstan">Kyrgyzstan</option>
-                                <option value="kazakhstan">Kazakhstan</option>
-                                <option value="azerbaijan">Azerbaijan</option>
-                                <option value="poland">Poland</option>
+                                <option value="Russia">Russia</option>
+                                <option value="Georgia">Georgia</option>
+                                <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                <option value="Kazakhstan">Kazakhstan</option>
+                                <option value="Azerbaijan">Azerbaijan</option>
+                                <option value="Poland">Poland</option>
                             </select>
                         </div>
-                        <select>
+                        <select id="formNeet">
                             <option value="">NEET Status</option>
-                            <option value="appeared">Appeared</option>
-                            <option value="qualified">Qualified</option>
-                            <option value="not_appeared">Not Appeared</option>
-                            <option value="appearing">Appearing</option>
+                            <option value="Qualified">Qualified</option>
+                            <option value="Appeared">Appeared</option>
+                            <option value="Appearing this year">Appearing this year</option>
                         </select>
-                        <textarea placeholder="Your message..."></textarea>
+                        <textarea id="formMessage" placeholder="Any specific queries or preferences?"></textarea>
                         <button type="submit" class="btn-gold">
-                            <i class="fas fa-paper-plane"></i> Get Free Counselling
+                            <i class="fas fa-paper-plane"></i> Submit via WhatsApp
                         </button>
                     </form>
                 </div>
@@ -2545,21 +1912,19 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
+    <!-- ===== FOOTER (WITH CIRCULAR LOGO) ===== -->
     <footer>
         <div class="container">
             <div class="brand">
-                <div class="logo-text">Amygdala<span>.</span></div>
-                <p class="brand-desc">Premium medical education consultancy guiding students to the right universities with transparency and integrity.</p>
-                <div class="contact-mini">
-                    <a href="tel:+919544529928"><i class="fas fa-phone-alt"></i> +91 95445 29928</a>
-                    <a href="mailto:infoeduamygdala@gmail.com"><i class="fas fa-envelope"></i> infoeduamygdala@gmail.com</a>
-                    <a href="#" style="cursor:default;"><i class="fas fa-map-marker-alt"></i> Thiruvananthapuram, Kerala</a>
+                <div class="footer-brand">
+                    <img src="https://i.ibb.co/nsGBtnY1/Whats-App-Image-2026-08-24-at-5-05-54-PM.jpg" alt="Amygdala Logo" class="footer-logo" />
+                    <div class="logo-text">Amygdala<span>.</span></div>
                 </div>
+                <p class="brand-desc">Premium medical education consultancy guiding students to genuine, accredited universities with complete transparency.</p>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/amygdala_education_consultancy" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/amygdalaeducationconsultancy" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/919544529928" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/amygdala_education_consultancy" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/amygdalaeducationconsultancy" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/919544529928" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <div>
@@ -2569,7 +1934,7 @@
                     <li><a href="#countries">MBBS Abroad</a></li>
                     <li><a href="#universities">Universities</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#process">Journey</a></li>
+                    <li><a href="#team">Team</a></li>
                 </ul>
             </div>
             <div>
@@ -2579,27 +1944,21 @@
                     <li><a href="#services">MBBS India</a></li>
                     <li><a href="#services">Visa Guidance</a></li>
                     <li><a href="#services">Documentation</a></li>
-                    <li><a href="#services">Pre-Departure</a></li>
                 </ul>
             </div>
             <div>
-                <h5>Get Started</h5>
+                <h5>Contact</h5>
                 <ul>
+                    <li><a href="tel:+919544529928">+91 95445 29928</a></li>
+                    <li><a href="mailto:infoeduamygdala@gmail.com">Email Us</a></li>
                     <li><a href="#enquiry">Free Counselling</a></li>
-                    <li><a href="#faq">FAQs</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
                 </ul>
-                <div class="footer-cta">
-                    <a href="#enquiry" class="btn-gold"><i class="fas fa-calendar-check"></i> Book Now</a>
-                </div>
             </div>
             <div class="bottom">
-                <span>&copy; 2026 <span style="color:var(--gold);">Amygdala</span> Education Consultancy. All rights reserved.</span>
+                <span>&copy; 2026 Amygdala Education Consultancy. All rights reserved.</span>
                 <span>
                     <span class="legal-link" id="legalToggle">Business Information</span>
-                    <span class="sep">•</span>
-                    <span style="color:rgba(255,255,255,0.15);">Udyam details available on request</span>
+                    <span> • Udyam details available on request</span>
                 </span>
             </div>
         </div>
@@ -2610,55 +1969,46 @@
         <div class="modal-content">
             <button class="close" id="legalClose">&times;</button>
             <h3>Business Information</h3>
-            <p style="margin-bottom:12px; color:var(--muted); font-size:0.9rem;">Amygdala Education Consultancy is a legally registered entity.</p>
+            <p style="margin-bottom:12px; color:var(--muted); font-size:0.88rem;">Amygdala Education Consultancy is a legally registered entity.</p>
             <div class="detail-row"><strong>Registration No.</strong> <span>UDYAM-KL-12-0149176</span></div>
             <div class="detail-row"><strong>Enterprise Type</strong> <span>Micro Enterprise</span></div>
-            <div class="detail-row"><strong>Major Activity</strong> <span>Trading</span></div>
-            <div class="detail-row"><strong>NIC Code</strong> <span>85303 — Higher Education in Medical / Biotechnology</span></div>
-            <p class="legal-note">Registration certificate available on request.</p>
+            <div class="detail-row"><strong>Major Activity</strong> <span>Trading / Services</span></div>
+            <div class="detail-row"><strong>NIC Code</strong> <span>85303 — Higher Education</span></div>
         </div>
     </div>
 
-    <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-    <a href="https://wa.me/919544529928" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+    <!-- ===== FLOATING WHATSAPP & STICKY BOTTOM ===== -->
+    <a href="https://wa.me/919544529928" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- ===== STICKY BOTTOM ===== -->
     <div class="sticky-bottom">
-        <a href="tel:+919544529928">
-            <i class="fas fa-phone-alt"></i> Call
-        </a>
-        <a href="https://wa.me/919544529928" target="_blank">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-        <a href="#enquiry" class="cta-sticky">
-            <i class="fas fa-calendar-check"></i> Free Counselling
-        </a>
+        <a href="tel:+919544529928"><i class="fas fa-phone-alt"></i> Call</a>
+        <a href="https://wa.me/919544529928" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#enquiry" class="cta-sticky"><i class="fas fa-calendar-check"></i> Free Counselling</a>
     </div>
 
     <!-- ============================================================
-    JAVASCRIPT
-    ============================================================ -->
+         JAVASCRIPT
+         ============================================================ -->
     <script>
-        // ============================================================
-        // 1. NAVBAR
-        // ============================================================
+        // 1. Header scroll effect & Nav link highlighting
         const header = document.getElementById('header');
         const navLinks = document.querySelectorAll('#mainNav a');
+        const sections = document.querySelectorAll('section[id]');
 
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
+            if (window.scrollY > 40) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+
             let current = '';
-            const sections = document.querySelectorAll('section[id], .hero[id]');
-            sections.forEach(section => {
-                const top = section.offsetTop - 120;
+            sections.forEach(sec => {
+                const top = sec.offsetTop - 140;
                 if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
+                    current = sec.getAttribute('id');
                 }
             });
             navLinks.forEach(link => {
@@ -2667,11 +2017,9 @@
                     link.classList.add('active');
                 }
             });
-        });
+        }, { passive: true });
 
-        // ============================================================
-        // 2. HAMBURGER
-        // ============================================================
+        // 2. Mobile Menu Toggle
         const hamburger = document.getElementById('hamburger');
         const mainNav = document.getElementById('mainNav');
         hamburger.addEventListener('click', () => {
@@ -2685,427 +2033,226 @@
             });
         });
 
-        // ============================================================
-        // 3. SECTION REVEAL
-        // ============================================================
+        // 3. Scroll Reveal Animation
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
                 }
             });
-        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal-up, .stagger-children').forEach(el => {
-            revealObserver.observe(el);
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-        // ============================================================
-        // 4. FAQ ACCORDION
-        // ============================================================
+        document.querySelectorAll('.reveal-up, .stagger-children').forEach(el => revealObserver.observe(el));
+
+        // 4. Process Timeline Fill & Step Animation
+        const timeline = document.getElementById('processTimeline');
+        if (timeline) {
+            const timelineObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const fill = document.getElementById('timelineFill');
+                        if (fill) fill.classList.add('animated');
+                        const steps = document.querySelectorAll('.process-step-item');
+                        steps.forEach((item, i) => {
+                            setTimeout(() => item.classList.add('visible'), i * 180);
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            timelineObserver.observe(timeline);
+        }
+
+        // 5. Impact Counter Animation (Live Counting)
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'), 10);
+                    const suffix = el.getAttribute('data-suffix') || '';
+                    const duration = 1600;
+                    const frameRate = 25;
+                    const totalSteps = duration / frameRate;
+                    let step = 0;
+
+                    const timer = setInterval(() => {
+                        step++;
+                        const progress = step / totalSteps;
+                        const easeOut = 1 - Math.pow(1 - progress, 3);
+                        const current = Math.floor(easeOut * target);
+                        el.textContent = current + suffix;
+
+                        if (step >= totalSteps) {
+                            el.textContent = target + suffix;
+                            clearInterval(timer);
+                        }
+                    }, frameRate);
+
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.25 });
+
+        document.querySelectorAll('.num[data-target]').forEach(el => counterObserver.observe(el));
+
+        // 6. Touch-Enabled Responsive Slider Engine
+        function initSlider(trackId, prevBtnId, nextBtnId, autoDelay = 4500) {
+            const track = document.getElementById(trackId);
+            const prevBtn = document.getElementById(prevBtnId);
+            const nextBtn = document.getElementById(nextBtnId);
+            if (!track || !prevBtn || !nextBtn) return;
+
+            const items = track.children;
+            let index = 0;
+            let timer = null;
+
+            function getVisibleCount() {
+                const w = window.innerWidth;
+                if (w < 500) return 1.15;
+                if (w < 820) return 2;
+                if (w < 1100) return 3;
+                return 4;
+            }
+
+            function update() {
+                const visible = getVisibleCount();
+                const maxIndex = Math.max(0, items.length - Math.floor(visible));
+                if (index > maxIndex) index = maxIndex;
+
+                const gap = 16;
+                const containerWidth = track.parentElement.offsetWidth;
+                const itemWidth = (containerWidth - (Math.floor(visible) - 1) * gap) / visible;
+
+                for (let el of items) {
+                    el.style.flex = `0 0 ${itemWidth}px`;
+                }
+                const offset = index * (itemWidth + gap);
+                track.style.transform = `translateX(-${offset}px)`;
+            }
+
+            function next() {
+                const visible = getVisibleCount();
+                const maxIndex = Math.max(0, items.length - Math.floor(visible));
+                index = (index >= maxIndex) ? 0 : index + 1;
+                update();
+            }
+
+            function prev() {
+                const visible = getVisibleCount();
+                const maxIndex = Math.max(0, items.length - Math.floor(visible));
+                index = (index <= 0) ? maxIndex : index - 1;
+                update();
+            }
+
+            nextBtn.addEventListener('click', () => { next(); resetAuto(); });
+            prevBtn.addEventListener('click', () => { prev(); resetAuto(); });
+
+            function startAuto() { timer = setInterval(next, autoDelay); }
+            function resetAuto() { clearInterval(timer); startAuto(); }
+
+            // Touch Swipe for Mobile
+            let startX = 0;
+            track.parentElement.addEventListener('touchstart', (e) => {
+                startX = e.changedTouches[0].screenX;
+                clearInterval(timer);
+            }, { passive: true });
+
+            track.parentElement.addEventListener('touchend', (e) => {
+                const endX = e.changedTouches[0].screenX;
+                const diff = startX - endX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) next();
+                    else prev();
+                }
+                startAuto();
+            }, { passive: true });
+
+            window.addEventListener('resize', update);
+            update();
+            startAuto();
+        }
+
+        initSlider('countryTrack', 'countryPrev', 'countryNext', 4500);
+        initSlider('uniTrack', 'uniPrev', 'uniNext', 4800);
+        initSlider('serviceTrack', 'servicePrev', 'serviceNext', 4200);
+        initSlider('galleryTrack', 'galleryPrev', 'galleryNext', 5000);
+
+        // 7. Testimonials Swipe & Slider
+        const testTrack = document.getElementById('testimonialTrack');
+        if (testTrack) {
+            let testIdx = 0;
+            const count = testTrack.children.length;
+            function nextTest() {
+                testIdx = (testIdx + 1) % count;
+                testTrack.style.transform = `translateX(-${testIdx * 100}%)`;
+            }
+            function prevTest() {
+                testIdx = (testIdx <= 0) ? count - 1 : testIdx - 1;
+                testTrack.style.transform = `translateX(-${testIdx * 100}%)`;
+            }
+            let testTimer = setInterval(nextTest, 4800);
+
+            let tStartX = 0;
+            testTrack.parentElement.addEventListener('touchstart', (e) => {
+                tStartX = e.changedTouches[0].screenX;
+                clearInterval(testTimer);
+            }, { passive: true });
+
+            testTrack.parentElement.addEventListener('touchend', (e) => {
+                const tEndX = e.changedTouches[0].screenX;
+                const diff = tStartX - tEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) nextTest();
+                    else prevTest();
+                }
+                testTimer = setInterval(nextTest, 4800);
+            }, { passive: true });
+        }
+
+        // 8. FAQ Accordion
         document.querySelectorAll('.faq-item').forEach(item => {
             const q = item.querySelector('.faq-q');
             q.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(i => {
-                    i.classList.remove('active');
-                    i.querySelector('.faq-a').style.display = 'none';
-                });
-                if (!isActive) {
-                    item.classList.add('active');
-                    item.querySelector('.faq-a').style.display = 'block';
-                }
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
             });
         });
 
-        // ============================================================
-        // 5. LEGAL MODAL
-        // ============================================================
-        const modal = document.getElementById('legalModal');
-        const toggle = document.getElementById('legalToggle');
-        const close = document.getElementById('legalClose');
-        toggle.addEventListener('click', () => modal.classList.add('active'));
-        close.addEventListener('click', () => modal.classList.remove('active'));
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) modal.classList.remove('active');
-        });
-
-        // ============================================================
-        // 6. FORM -> WhatsApp Lead
-        // ============================================================
+        // 9. WhatsApp Form Submission
         const enquiryForm = document.getElementById('enquiryForm');
-        const phoneNumber = '919544529928';
         enquiryForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = enquiryForm.querySelector('input[type="text"]').value.trim();
-            const phone = enquiryForm.querySelector('input[type="tel"]').value.trim();
-            const email = enquiryForm.querySelector('input[type="email"]').value.trim();
-            const country = enquiryForm.querySelector('select').value;
-            const neet = enquiryForm.querySelectorAll('select')[1].value;
-            const message = enquiryForm.querySelector('textarea').value.trim();
-            const msg =
-                `Hello Amygdala!%0A%0A*Name:* ${name || 'Not provided'}%0A*Phone:* ${phone || 'Not provided'}%0A*Email:* ${email || 'Not provided'}%0A*Preferred Country:* ${country || 'Not selected'}%0A*NEET Status:* ${neet || 'Not selected'}%0A*Message:* ${message || 'No message'}`;
-            const url = `https://wa.me/${phoneNumber}?text=${msg}`;
-            window.open(url, '_blank');
+            const name = document.getElementById('formName').value.trim();
+            const phone = document.getElementById('formPhone').value.trim();
+            const email = document.getElementById('formEmail').value.trim();
+            const country = document.getElementById('formCountry').value;
+            const neet = document.getElementById('formNeet').value;
+            const message = document.getElementById('formMessage').value.trim();
+
+            const text = `*New Admission Enquiry - Amygdala*%0A%0A` +
+                `*Name:* ${name}%0A` +
+                `*Phone:* ${phone}%0A` +
+                `*Email:* ${email || 'N/A'}%0A` +
+                `*Country Preference:* ${country || 'Not specified'}%0A` +
+                `*NEET Status:* ${neet || 'Not specified'}%0A` +
+                `*Message:* ${message || 'No additional message'}`;
+
+            window.open(`https://wa.me/919544529928?text=${text}`, '_blank');
         });
 
-        // ============================================================
-        // 7. COUNTER ANIMATION
-        // ============================================================
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.count);
-                    const suffix = el.querySelector('.counter-suffix')?.textContent || '';
-                    let current = 0;
-                    const step = Math.ceil(target / 60);
-                    const timer = setInterval(() => {
-                        current += step;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        el.textContent = current + suffix;
-                    }, 20);
-                    counterObserver.unobserve(el);
-                }
-            });
-        }, { threshold: 0.3 });
-        document.querySelectorAll('.num[data-count]').forEach(el => {
-            counterObserver.observe(el);
-        });
+        // 10. Legal Modal Toggle
+        const legalModal = document.getElementById('legalModal');
+        const legalToggle = document.getElementById('legalToggle');
+        const legalClose = document.getElementById('legalClose');
 
-        // ============================================================
-        // 8. PROCESS TIMELINE
-        // ============================================================
-        const timelineObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const fill = document.getElementById('timelineFill');
-                    if (fill) {
-                        fill.classList.remove('animated');
-                        void fill.offsetWidth;
-                        fill.classList.add('animated');
-                    }
-                    const steps = document.querySelectorAll('.process-step-item');
-                    steps.forEach((item, i) => {
-                        setTimeout(() => {
-                            item.classList.add('visible');
-                        }, i * 180);
-                    });
-                    timelineObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-        const timeline = document.getElementById('processTimeline');
-        if (timeline) {
-            document.querySelectorAll('.process-step-item').forEach(el => el.classList.remove('visible'));
-            timelineObserver.observe(timeline);
-        }
-
-        // ============================================================
-        // 9. SLIDER FACTORY (reusable)
-        // ============================================================
-        function createSlider(config) {
-            const { trackId, prevId, nextId, itemSelector, slidesToShow = 4, autoPlay = true, delay = 4500 } = config;
-            const track = document.getElementById(trackId);
-            const prev = document.getElementById(prevId);
-            const next = document.getElementById(nextId);
-            if (!track) return null;
-            const items = track.querySelectorAll(itemSelector);
-            const total = items.length;
-            let currentIndex = 0;
-            let slidesToShowActual = slidesToShow;
-            let autoTimer = null;
-
-            function getSlidesToShow() {
-                const w = window.innerWidth;
-                if (w < 480) return 1.15;
-                if (w < 768) return 2;
-                if (w < 1024) return 3;
-                return slidesToShow;
-            }
-
-            function update() {
-                slidesToShowActual = getSlidesToShow();
-                const maxIndex = Math.max(0, total - Math.floor(slidesToShowActual));
-                if (currentIndex > maxIndex) currentIndex = maxIndex;
-                const gap = 20;
-                const cw = (100 / slidesToShowActual) - (gap * (Math.floor(slidesToShowActual) - 1) / slidesToShowActual /
-                100 * 100);
-                items.forEach(item => {
-                    item.style.flex = `0 0 calc(${100 / slidesToShowActual}% - ${gap * (Math.floor(slidesToShowActual) - 1) / slidesToShowActual}px)`;
-                });
-                const offset = currentIndex * (100 / slidesToShowActual + gap * (Math.floor(slidesToShowActual) - 1) /
-                    slidesToShowActual / 100 * 100);
-                track.style.transform = `translateX(-${offset}%)`;
-            }
-
-            function nextSlide() {
-                const maxIndex = Math.max(0, total - Math.floor(slidesToShowActual));
-                if (currentIndex >= maxIndex) {
-                    currentIndex = 0;
-                } else {
-                    currentIndex++;
-                }
-                update();
-                resetAutoPlay();
-            }
-
-            function prevSlide() {
-                if (currentIndex <= 0) {
-                    const maxIndex = Math.max(0, total - Math.floor(slidesToShowActual));
-                    currentIndex = maxIndex;
-                } else {
-                    currentIndex--;
-                }
-                update();
-                resetAutoPlay();
-            }
-
-            function resetAutoPlay() {
-                if (autoTimer) { clearInterval(autoTimer);
-                    autoTimer = null; }
-                if (autoPlay) { autoTimer = setInterval(nextSlide, delay); }
-            }
-
-            function pauseAutoPlay() { if (autoTimer) { clearInterval(autoTimer);
-                    autoTimer = null; } }
-
-            function resumeAutoPlay() { if (autoPlay && !autoTimer) { autoTimer = setInterval(nextSlide, delay); } }
-
-            prev.addEventListener('click', prevSlide);
-            next.addEventListener('click', nextSlide);
-            const container = track.closest('.slider-container');
-            if (container) {
-                container.addEventListener('mouseenter', pauseAutoPlay);
-                container.addEventListener('mouseleave', resumeAutoPlay);
-                container.addEventListener('touchstart', pauseAutoPlay);
-                container.addEventListener('touchend', resumeAutoPlay);
-            }
-            window.addEventListener('resize', update);
-            update();
-            resetAutoPlay();
-            return { nextSlide, prevSlide, update };
-        }
-
-        // Init all sliders
-        createSlider({
-            trackId: 'countryTrack',
-            prevId: 'countryPrev',
-            nextId: 'countryNext',
-            itemSelector: '.country-slide',
-            slidesToShow: 4,
-            autoPlay: true,
-            delay: 4000
-        });
-
-        createSlider({
-            trackId: 'uniTrack',
-            prevId: 'uniPrev',
-            nextId: 'uniNext',
-            itemSelector: '.uni-slide',
-            slidesToShow: 3,
-            autoPlay: true,
-            delay: 4200
-        });
-
-        createSlider({
-            trackId: 'serviceTrack',
-            prevId: 'servicePrev',
-            nextId: 'serviceNext',
-            itemSelector: '.service-slide',
-            slidesToShow: 4,
-            autoPlay: true,
-            delay: 3800
-        });
-
-        // ============================================================
-        // 10. GALLERY SLIDER
-        // ============================================================
-        const galleryTrack = document.getElementById('galleryTrack');
-        const galleryPrev = document.getElementById('galleryPrev');
-        const galleryNext = document.getElementById('galleryNext');
-        const galleryItems = galleryTrack.querySelectorAll('.gallery-card');
-        let galleryIndex = 0;
-        let gallerySlidesToShow = 4;
-
-        function getGallerySlidesToShow() {
-            const w = window.innerWidth;
-            if (w < 480) return 1.15;
-            if (w < 768) return 2;
-            if (w < 1024) return 3;
-            return 4;
-        }
-
-        function updateGallery() {
-            gallerySlidesToShow = getGallerySlidesToShow();
-            const total = galleryItems.length;
-            const maxIndex = Math.max(0, total - Math.floor(gallerySlidesToShow));
-            if (galleryIndex > maxIndex) galleryIndex = maxIndex;
-            const gap = 20;
-            const cw = (100 / gallerySlidesToShow) - (gap * (Math.floor(gallerySlidesToShow) - 1) / gallerySlidesToShow /
-            100 * 100);
-            galleryItems.forEach(item => {
-                item.style.flex = `0 0 calc(${100 / gallerySlidesToShow}% - ${gap * (Math.floor(gallerySlidesToShow) - 1) / gallerySlidesToShow}px)`;
-            });
-            const offset = galleryIndex * (100 / gallerySlidesToShow + gap * (Math.floor(gallerySlidesToShow) - 1) /
-                gallerySlidesToShow / 100 * 100);
-            galleryTrack.style.transform = `translateX(-${offset}%)`;
-        }
-
-        function galleryNextSlide() {
-            const total = galleryItems.length;
-            const maxIndex = Math.max(0, total - Math.floor(gallerySlidesToShow));
-            if (galleryIndex >= maxIndex) {
-                galleryIndex = 0;
-            } else {
-                galleryIndex++;
-            }
-            updateGallery();
-        }
-
-        function galleryPrevSlide() {
-            if (galleryIndex <= 0) {
-                const total = galleryItems.length;
-                galleryIndex = Math.max(0, total - Math.floor(gallerySlidesToShow));
-            } else {
-                galleryIndex--;
-            }
-            updateGallery();
-        }
-
-        galleryNext.addEventListener('click', galleryNextSlide);
-        galleryPrev.addEventListener('click', galleryPrevSlide);
-        window.addEventListener('resize', updateGallery);
-        updateGallery();
-
-        let galleryAutoTimer = setInterval(galleryNextSlide, 5000);
-        const galleryContainer = document.getElementById('gallerySlider');
-        if (galleryContainer) {
-            galleryContainer.addEventListener('mouseenter', () => clearInterval(galleryAutoTimer));
-            galleryContainer.addEventListener('mouseleave', () => {
-                clearInterval(galleryAutoTimer);
-                galleryAutoTimer = setInterval(galleryNextSlide, 5000);
-            });
-            galleryContainer.addEventListener('touchstart', () => clearInterval(galleryAutoTimer));
-            galleryContainer.addEventListener('touchend', () => {
-                clearInterval(galleryAutoTimer);
-                galleryAutoTimer = setInterval(galleryNextSlide, 5000);
+        if (legalToggle && legalModal && legalClose) {
+            legalToggle.addEventListener('click', () => legalModal.classList.add('active'));
+            legalClose.addEventListener('click', () => legalModal.classList.remove('active'));
+            legalModal.addEventListener('click', (e) => {
+                if (e.target === legalModal) legalModal.classList.remove('active');
             });
         }
-
-        // ============================================================
-        // 11. TESTIMONIALS SLIDER
-        // ============================================================
-        const testimonialTrack = document.getElementById('testimonialTrack');
-        const testimonialSlider = document.getElementById('testimonialSlider');
-        const testimonialDots = document.getElementById('testimonialDots');
-        const testimonialPrev = document.getElementById('testimonialPrev');
-        const testimonialNext = document.getElementById('testimonialNext');
-
-        if (testimonialTrack && testimonialSlider) {
-            const testimonials = testimonialTrack.querySelectorAll('.testimonial-item');
-            let testimonialIndex = 0;
-            let testimonialTimer;
-
-            function renderTestimonialDots() {
-                if (!testimonialDots) return;
-                testimonialDots.innerHTML = '';
-                testimonials.forEach((_, index) => {
-                    const dot = document.createElement('button');
-                    dot.className = 'dot' + (index === testimonialIndex ? ' active' : '');
-                    dot.setAttribute('aria-label', `Show testimonial ${index + 1}`);
-                    dot.addEventListener('click', () => {
-                        testimonialIndex = index;
-                        updateTestimonials();
-                        restartTestimonialAutoPlay();
-                    });
-                    testimonialDots.appendChild(dot);
-                });
-            }
-
-            function updateTestimonials() {
-                testimonialTrack.style.transform = `translate3d(-${testimonialIndex * 100}%,0,0)`;
-                if (testimonialDots) {
-                    testimonialDots.querySelectorAll('.dot').forEach((dot, index) => {
-                        dot.classList.toggle('active', index === testimonialIndex);
-                    });
-                }
-            }
-
-            function nextTestimonial() {
-                testimonialIndex = (testimonialIndex + 1) % testimonials.length;
-                updateTestimonials();
-            }
-
-            function startTestimonialAutoPlay() {
-                clearInterval(testimonialTimer);
-                testimonialTimer = setInterval(nextTestimonial, 4500);
-            }
-
-            function restartTestimonialAutoPlay() {
-                clearInterval(testimonialTimer);
-                startTestimonialAutoPlay();
-            }
-
-            testimonialPrev.addEventListener('click', () => {
-                testimonialIndex = testimonialIndex === 0 ? testimonials.length - 1 : testimonialIndex - 1;
-                updateTestimonials();
-                restartTestimonialAutoPlay();
-            });
-
-            testimonialNext.addEventListener('click', () => {
-                nextTestimonial();
-                restartTestimonialAutoPlay();
-            });
-
-            testimonialSlider.addEventListener('mouseenter', () => clearInterval(testimonialTimer));
-            testimonialSlider.addEventListener('mouseleave', startTestimonialAutoPlay);
-
-            let touchStartX = 0;
-            testimonialSlider.addEventListener('touchstart', e => {
-                touchStartX = e.changedTouches[0].screenX;
-                clearInterval(testimonialTimer);
-            }, { passive: true });
-
-            testimonialSlider.addEventListener('touchend', e => {
-                const touchEndX = e.changedTouches[0].screenX;
-                const diff = touchStartX - touchEndX;
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        nextTestimonial();
-                    } else {
-                        testimonialIndex = testimonialIndex === 0 ? testimonials.length - 1 : testimonialIndex - 1;
-                        updateTestimonials();
-                    }
-                }
-                startTestimonialAutoPlay();
-            }, { passive: true });
-
-            renderTestimonialDots();
-            updateTestimonials();
-            startTestimonialAutoPlay();
-        }
-
-        // ============================================================
-        // 12. SMOOTH SCROLL
-        // ============================================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href === '#') return;
-                const target = document.querySelector(href);
-                if (target) {
-                    e.preventDefault();
-                    const offset = header.offsetHeight + 10;
-                    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
-                    window.scrollTo({ top, behavior: 'smooth' });
-                }
-            });
-        });
-
-        console.log('🚀 Amygdala — All sliders active, footer white line removed.');
     </script>
 </body>
 </html>
